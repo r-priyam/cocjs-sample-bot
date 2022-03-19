@@ -16,7 +16,7 @@ for (const file of commandFiles) {
     commands.push(command.data.toJSON());
 }
 
-const rest = new REST({ version: '9' }).setToken(process.env.BOT_TOKEN!);
+const rest = new REST({ version: '10' }).setToken(process.env.BOT_TOKEN!);
 
 // guild only commands syncs fast, helpful for testing
 rest.put(Routes.applicationGuildCommands(process.env.BOT_CLIENT_ID!, process.env.TEST_GUILD_ID!), { body: commands })
