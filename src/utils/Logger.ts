@@ -1,3 +1,5 @@
+// github.com/csuvajit/escapebot/blob/master/src/bot/util/Logger.ts
+
 import util from 'util';
 import moment from 'moment';
 import { style } from '@ogma/styler';
