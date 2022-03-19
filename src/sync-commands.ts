@@ -8,7 +8,7 @@ env.config();
 
 const commands = [];
 const LOGGER = new Logger();
-const commandFiles = fs.readdirSync(path.join(__dirname, 'commands')).filter((file) => file.endsWith('.ts'));
+const commandFiles = fs.readdirSync(path.join(__dirname, 'commands')).filter((file) => file.endsWith('.js'));
 
 for (const file of commandFiles) {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
