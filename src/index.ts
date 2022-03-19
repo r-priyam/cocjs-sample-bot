@@ -11,13 +11,6 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
 client.coc = new ClashClient({ cache: true });
 client.commands = new Collection();
-const commandFiles = fs.readdirSync(path.join(__dirname, 'commands')).filter((file) => file.endsWith('.js'));
-
-for (const file of commandFiles) {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const command = require(path.join(__dirname, `commands/${file}`));
-    client.commands.set(command.data.name, command);
-}
 
 client.once('ready', () => {
     LOGGER.info('Bot is ready!', { label: 'MAIN' });
@@ -41,6 +34,13 @@ client.on('interactionCreate', async (interaction) => {
 });
 
 async function main() {
+    const commandFiles = fs.readdirSync(path.join(__dirname, 'commands')).filter((file) => file.endsWith('.js'));
+
+    for (const file of commandFiles) {
+        const command = await import(path.join(__dirname, `commands/${file}`));
+        client.commands.set(command.data.name, command);
+    }
+
     await client.coc.login({
         email: process.env.CLASH_EMAIL!,
         password: process.env.CLASH_PASSWORD!,

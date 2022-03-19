@@ -1,7 +1,7 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
 import { MessageEmbed } from 'discord.js';
 import type { CommandInteraction } from 'discord.js';
-import { Util } from 'clashofclans.js';
+import { HTTPError, Util } from 'clashofclans.js';
 
 export = {
     data: new SlashCommandBuilder()
@@ -22,8 +22,7 @@ export = {
             const embed = new MessageEmbed().setTitle(`${player.name}`).setThumbnail(player.league.icon.url);
             await interaction.editReply({ embeds: [embed] });
         } catch (error) {
-            // @ts-expect-error no type for error
-            if (error.reason === 'notFound') {
+            if (error instanceof HTTPError && error.message === 'notFound') {
                 await interaction.editReply({ content: `$Failed to find player with ${playerTag}!` });
             } else {
                 await interaction.editReply({ content: 'Something went wrong, try again!' });
