@@ -10,7 +10,8 @@
         "lint": "eslint \"**/*.ts\"",
         "lint:fix": "eslint \"**/*.ts\" --fix",
         "start": "node --enable-source-maps dist/src/index.js",
-        "sync:commands": "node --enable-source-maps dist/src/sync-commands.js"
+        "sync:commands": "node --enable-source-maps dist/src/sync-commands.js",
+        "typecheck": "tsc --noemit"
     },
     "engines": {
         "node": ">=16.x"
