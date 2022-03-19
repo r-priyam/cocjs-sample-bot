@@ -1,27 +1,25 @@
 {
-	"compilerOptions": {
-		"pretty": true,
-		"strict": true,
-		"outDir": "dist",
-		"rootDir": "./",
-		"sourceRoot": "/",
-		"sourceMap": true,
-		"target": "ES2020",
-		"module": "CommonJS",
-		"inlineSources": true,
-		"declaration": false,
-		"alwaysStrict": true,
-		"skipLibCheck": true,
-		"esModuleInterop": true,
-		"removeComments": false,
-		"resolveJsonModule": true,
-		"moduleResolution": "node",
-		"emitDecoratorMetadata": true,
-		"experimentalDecorators": true,
-		"allowSyntheticDefaultImports": true,
-		"forceConsistentCasingInFileNames": true
-	},
-	"include": [
-		"src"
-	]
+    "compilerOptions": {
+        "pretty": true,
+        "strict": true,
+        "outDir": "dist",
+        "rootDir": "./",
+        "sourceRoot": "/",
+        "sourceMap": true,
+        "target": "ES2020",
+        "module": "CommonJS",
+        "inlineSources": true,
+        "declaration": false,
+        "alwaysStrict": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "removeComments": false,
+        "resolveJsonModule": true,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "forceConsistentCasingInFileNames": true
+    },
+    "include": ["src"]
 }
