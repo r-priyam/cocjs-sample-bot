@@ -1,7 +1,7 @@
 // github.com/csuvajit/escapebot/blob/master/src/bot/util/Logger.ts
 
 import util from 'util';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import { style } from '@ogma/styler';
 
 const ColeredTag = (type: string) => {
@@ -35,7 +35,7 @@ export default class Logger {
     }
 
     private static write(message: string | any, { error, label, tag }: { error?: boolean; label?: string; tag: string }) {
-        const timestamp = style.cyan.bold.apply(moment().utcOffset('+05:30').format('DD-MM-YYYY kk:mm:ss'));
+        const timestamp = style.cyan.bold.apply(dayjs().format('DD-MM-YYYY hh:mm:ss'));
         const content = this.clean(message);
         const stream = error ? process.stderr : process.stdout;
         stream.write(`[${timestamp}] ${ColeredTag(tag)} » ${label ? `[${label}] » ` : ''}${content}\n`);
