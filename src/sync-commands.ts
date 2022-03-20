@@ -18,7 +18,8 @@ async function syncCommands() {
     }
 
     // guild only commands syncs fast, helpful for testing
-    rest.put(Routes.applicationGuildCommands(process.env.BOT_CLIENT_ID!, process.env.TEST_GUILD_ID!), { body: commands })
+    await rest
+        .put(Routes.applicationGuildCommands(process.env.BOT_CLIENT_ID!, process.env.TEST_GUILD_ID!), { body: commands })
         .then(() => LOGGER.info('Successfully registered application commands.', { label: 'Commands Sync' }))
         .catch(console.error);
 }
