@@ -9,8 +9,8 @@
         "format": "prettier --write .",
         "lint": "eslint \"**/*.ts\"",
         "lint:fix": "eslint \"**/*.ts\" --fix",
-        "start": "node --enable-source-maps dist/src/index.js",
-        "sync:commands": "node --enable-source-maps dist/src/sync-commands.js",
+        "start": "npm run build && node --enable-source-maps dist/src/index.js",
+        "sync:commands": "npm run build && node --enable-source-maps dist/src/sync-commands.js",
         "typecheck": "tsc --noemit"
     },
     "engines": {
