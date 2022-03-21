@@ -2,17 +2,28 @@ import { SlashCommandBuilder } from '@discordjs/builders';
 import { MessageEmbed } from 'discord.js';
 import type { CommandInteraction } from 'discord.js';
 import { HTTPError, Util } from 'clashofclans.js';
+import { getLinkedClanTag } from '../database/clanData';
 
 export = {
     data: new SlashCommandBuilder()
         .setName('clan')
         .setDescription('Get the info of a clan')
-        .addStringOption((option) => option.setName('tag').setDescription('The clan tag').setRequired(true)),
+        .addStringOption((option) => option.setName('tag').setDescription('The clan tag')),
 
     async execute(interaction: CommandInteraction) {
-        const clanTag = interaction.options.getString('tag');
+        let clanTag = interaction.options.getString('tag');
 
-        if (!Util.isValidTag(Util.formatTag(clanTag!))) {
+        if (!clanTag) {
+            const tag = await getLinkedClanTag(interaction.user.id);
+            if (!tag) {
+                return interaction.reply({
+                    content:
+                        "You haven't linked a clan to your account! Either run `/link` command to link clan to your account or provide clan tag as second argument",
+                    ephemeral: true
+                });
+            }
+            clanTag = tag;
+        } else if (!Util.isValidTag(Util.formatTag(clanTag!))) {
             return interaction.reply({ content: `${clanTag} isn't a valid clan tag!`, ephemeral: true });
         }
 

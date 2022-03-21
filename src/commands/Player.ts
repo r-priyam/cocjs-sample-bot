@@ -2,17 +2,28 @@ import { SlashCommandBuilder } from '@discordjs/builders';
 import { MessageEmbed } from 'discord.js';
 import type { CommandInteraction } from 'discord.js';
 import { HTTPError, Util } from 'clashofclans.js';
+import { getLinkedPlayerTags } from '../database/playerData';
 
 export = {
     data: new SlashCommandBuilder()
         .setName('player')
         .setDescription('Get the info of a player')
-        .addStringOption((option) => option.setName('tag').setDescription('The player tag').setRequired(true)),
+        .addStringOption((option) => option.setName('tag').setDescription('The player tag')),
 
     async execute(interaction: CommandInteraction) {
-        const playerTag = interaction.options.getString('tag');
+        let playerTag = interaction.options.getString('tag');
 
-        if (!Util.isValidTag(Util.formatTag(playerTag!))) {
+        if (!playerTag) {
+            const tag = await getLinkedPlayerTags(interaction.user.id);
+            if (!tag) {
+                return interaction.reply({
+                    content:
+                        "You haven't linked a player to your account! Either run `/link` command to link clan to your account or provide clan tag as second argument",
+                    ephemeral: true
+                });
+            }
+            playerTag = tag;
+        } else if (!Util.isValidTag(Util.formatTag(playerTag!))) {
             return interaction.reply({ content: `${playerTag} isn't a valid player tag!`, ephemeral: true });
         }
 
