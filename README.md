@@ -36,6 +36,7 @@ After completing the above steps, do invite the bot to your server.
 1. Clone the project using `git clone https://github.com/r-priyam/cocjs-smaple-bot.git`
 2. Install dependencies using `npm install`
 3. Make `.env` file in the project root directory and set the following values:
+    - `DATABASE_URL`: Your postgres database connection string
     - `CLASH_EMAIL` - Clash of Clans API account email address
     - `CLASH_PASSWORD` - Password for the account of `CLASH_EMAIL`
     - `PROJECT_NAME` - Your project name

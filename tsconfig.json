@@ -5,6 +5,7 @@
         "outDir": "dist",
         "rootDir": "./",
         "sourceRoot": "/",
+        "lib": ["esnext"],
         "sourceMap": true,
         "target": "ES2020",
         "module": "CommonJS",

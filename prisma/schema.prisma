@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model players {
+  id        Int    @id @default(autoincrement())
+  discordId String
+  playerTag String @db.VarChar(14)
+
+  @@unique([discordId, playerTag])
+  @@index([discordId])
+}
+
+model clans {
+  id        Int    @id @default(autoincrement())
+  discordId String
+  clanTag String @db.VarChar(14)
+
+  @@unique([discordId, clanTag])
+  @@index([discordId])
+}
