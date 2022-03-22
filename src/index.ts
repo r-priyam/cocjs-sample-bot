@@ -2,9 +2,8 @@ import path from 'path';
 import fs from 'node:fs';
 import { Client, Collection, Intents } from 'discord.js';
 import { Client as ClashClient } from 'clashofclans.js';
-import * as env from 'dotenv';
 import Logger from './utils/Logger';
-env.config();
+import { ENV } from './utils/EnvValidator';
 
 const LOGGER = new Logger();
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
@@ -43,12 +42,12 @@ async function main() {
     }
 
     await client.coc.login({
-        email: process.env.CLASH_EMAIL!,
-        password: process.env.CLASH_PASSWORD!,
+        email: ENV.CLASH_EMAIL,
+        password: ENV.CLASH_PASSWORD!,
         keyCount: 1,
-        keyName: process.env.PROJECT_NAME
+        keyName: ENV.PROJECT_NAME
     });
-    await client.login(process.env.BOT_TOKEN);
+    await client.login(ENV.BOT_TOKEN);
 }
 
 main()

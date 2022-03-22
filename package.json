@@ -29,6 +29,7 @@
         "eslint": "^8.11.0",
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-prettier": "^4.0.0",
+        "joi": "^17.6.0",
         "prisma": "^3.11.0",
         "rimraf": "^3.0.2",
         "ts-node": "^10.7.0",
