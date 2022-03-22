@@ -2,6 +2,7 @@ import path from 'path';
 import fs from 'node:fs';
 import { Client, Collection, Intents } from 'discord.js';
 import { Client as ClashClient } from 'clashofclans.js';
+import { PrismaClient } from '@prisma/client';
 import Logger from './utils/Logger';
 import { ENV } from './utils/EnvValidator';
 
@@ -14,6 +15,7 @@ async function main() {
     client.commands = new Collection();
     client.logger = new Logger();
     client.coc = new ClashClient({ cache: true });
+    client.db = new PrismaClient();
     client.coc.events.addClans(ENV.CLAN_TAGS.split(','));
 
     for (const file of commandFiles) {

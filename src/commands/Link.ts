@@ -30,7 +30,7 @@ export = {
         if (type === 'link_player') {
             try {
                 const player = await interaction.client.coc.getPlayer(tag!);
-                await linkPlayerTag(interaction, interaction.user.id, player.tag);
+                await linkPlayerTag(interaction, player.tag);
             } catch (error) {
                 if (error instanceof HTTPError && error.message === 'notFound') {
                     await interaction.editReply({ content: `$Failed to find player with ${tag}!` });
@@ -41,7 +41,7 @@ export = {
         } else if (type === 'link_clan') {
             try {
                 const clan = await interaction.client.coc.getClan(tag!);
-                await linkClanTag(interaction, interaction.user.id, clan.tag);
+                await linkClanTag(interaction, clan.tag);
             } catch (error) {
                 if (error instanceof HTTPError && error.message === 'notFound') {
                     await interaction.editReply({ content: `$Failed to find clan with ${tag}!` });

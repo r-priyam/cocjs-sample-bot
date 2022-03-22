@@ -14,7 +14,7 @@ export = {
         let playerTag = interaction.options.getString('tag');
 
         if (!playerTag) {
-            const tag = await getLinkedPlayerTags(interaction.user.id);
+            const tag = await getLinkedPlayerTags(interaction);
             if (!tag) {
                 return interaction.reply({
                     content:

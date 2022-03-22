@@ -14,7 +14,7 @@ export = {
         let clanTag = interaction.options.getString('tag');
 
         if (!clanTag) {
-            const tag = await getLinkedClanTag(interaction.user.id);
+            const tag = await getLinkedClanTag(interaction);
             if (!tag) {
                 return interaction.reply({
                     content:
