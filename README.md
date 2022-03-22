@@ -25,6 +25,7 @@ This sample bot project aims to help you get started with interacting [Clash of 
 ## Before You Start
 Before you dive into running this project, I expect you to have these things ready:
 - [NodeJs](https://nodejs.org/) (version>=16)
+- [Postgresql](https://www.postgresql.org/) installed locally and ruuning
 - [git](https://git-scm.com/) (This is required to clone the project on your local machine)
 - Account on [Clash of Clans API](https://developer.clashofclans.com/)
 - Bot account on [Discord](https://discord.com/developers/)
@@ -43,13 +44,22 @@ After completing the above steps, do invite the bot to your server.
     - `BOT_CLIENT_ID` - Bot client id
     - `TEST_GUILD_ID` - Guild id of the test guild in which bot was added
     - `BOT_TOKEN` - Discord bot token of your bot account created on [Discord](https://discord.com/developers/)
+    - `CLAN_TAGS`: Clan tags separated by comma to be added to the `clashofclans.js` for receiving clan events.
+    - `MEMBER_REPORTING_CHANNEL_ID`: Channel id of the channel where member join/leave reporting is to be done.
 4. Synchronize the Application commands(Slash commands) with the test guild using `npm run sync:commands`. This will add the commands to the test guild. Please note that it takes sometime to cache the commands in guild but not much when we are adding commands specifically for guild only. Have some patience.
 5. Run the bot using `npm run start`.
 
-Once the bot is running and slash commands are reflecting in the test server then you can try running following commands:
+Once the bot is running and slash commands are reflecting in the test server then you can try running the commands.
+
+## Commands
 - `/player` - To get player information
 - `/clan` - To get clan information
 - `/war` - To get clan war information
+- `/link` - To link a clan or a player to your discord account.
+
+Tag is an optional parameter in `/player`, `/clan` and `/war` commands. If you don't provide it then it will attempt to get the respective tag information from the database for the user who sent the command and will return the data for the first tag found in the database.
+
+If you provide the tag then it will attempt to query the data directly from the API and will return the data for the tag provided.
 
 ## FAQ's
 --------
