@@ -5,5 +5,14 @@
     "singleQuote": true,
     "quoteProps": "consistent",
     "bracketSpacing": true,
-    "trailingComma": "none"
+    "trailingComma": "none",
+    "overrides": [
+        {
+            "files": ["*.md"],
+            "options": {
+                "useTabs": false,
+                "tabWidth": 4
+            }
+        }
+    ]
 }
