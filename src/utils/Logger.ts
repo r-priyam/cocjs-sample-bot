@@ -35,10 +35,10 @@ export default class Logger {
     }
 
     private static write(message: string | any, { error, label, tag }: { error?: boolean; label?: string; tag: string }) {
-        const timestamp = style.cyan.bold.apply(dayjs().format('DD-MM-YYYY hh:mm:ss'));
+        const timestamp = style.blue.bold.apply(dayjs().format('DD-MM-YYYY hh:mm:ss'));
         const content = this.clean(message);
         const stream = error ? process.stderr : process.stdout;
-        stream.write(`[${timestamp}] ${ColeredTag(tag)} » ${label ? `[${label}] » ` : ''}${content}\n`);
+        stream.write(`[${timestamp}] ${ColeredTag(tag)} » ${label ? `[${style.color(214).bold.apply(label)}] » ` : ''}${content}\n`);
     }
 
     private static clean(message: string | any) {
