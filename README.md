@@ -32,6 +32,17 @@ Before you dive into running this project, I expect you to have these things rea
 
 After completing the above steps, do invite the bot to your server.
 
+## Important Links
+-------------------
+-   [clashofclans.js Documentation](https://clashofclans.js.org/docs/)
+-   [Clash of Clans Developer Website](https://developer.clashofclans.com/)
+-   [Clash of Clans API Community Discord](https://discord.gg/Eaja7gJ)
+-   [Discord Developer Website](https://discord.com/developers/)
+-   [discord.js Documentation](https://discord.js.org/)
+-   [discord.js Guide](https://discordjs.guide/)
+-   [Prisma ORM docs](https://www.prisma.io/docs/)
+
+
 ## Getting Started
 -------------------
 1. Clone the project using `git clone https://github.com/r-priyam/cocjs-smaple-bot.git`
@@ -52,6 +63,7 @@ After completing the above steps, do invite the bot to your server.
 Once the bot is running and slash commands are reflecting in the test server then you can try running the commands.
 
 ## Commands
+------------
 - `/player` - To get player information
 - `/clan` - To get clan information
 - `/war` - To get clan war information
@@ -97,4 +109,4 @@ If you provide the tag then it will attempt to query the data directly from the 
 - **Q:** How can I add more commands?
     - **A:** Please read discordjs guide [here](https://discordjs.guide/interactions/slash-commands.html#adding-commands) and follow the steps to add more commands.
 
-If you have any questions or suggestions, please feel free to open an issue [here](https://github.com/r-priyam/cocjs-smaple-bot/issues/new)
+If you have any questions or suggestions, please feel free to open an issue [here](https://github.com/r-priyam/cocjs-smaple-bot/issues/new).
