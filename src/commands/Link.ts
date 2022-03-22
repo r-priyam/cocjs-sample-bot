@@ -26,6 +26,7 @@ export = {
             return interaction.reply({ content: `${tag} isn't a valid tag!`, ephemeral: true });
         }
 
+        await interaction.deferReply();
         if (type === 'link_player') {
             try {
                 const player = await interaction.client.coc.getPlayer(tag!);
