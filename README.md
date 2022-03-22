@@ -63,13 +63,31 @@ If you provide the tag then it will attempt to query the data directly from the 
 
 ## FAQ's
 --------
-- **Q:** Why it requires my clash of clans account credentials?
-    - **A:** It is required to get the access token to interact with clash of clans api. If you don't want to give your account credentials, you can use the [Clash of Clans API](https://developer.clashofclans.com/) website directly to get the access token and then you can setup the `CLASH_TOKEN` environment variable. It will then require you do some extra steps to get the `clasofclans.js` to work. In `index.ts` file do -
+- **Q:** Why it requires my Clash of Clans API account credentials?
+    - **A:** It is required to get the access token to interact with clash of clans api. If you don't want to give your account credentials, you can use the [Clash of Clans API](https://developer.clashofclans.com/) website directly to get the access token and then you can setup the `CLASH_TOKEN` environment variable. It will then require you do some extra steps to get the `clasofclans.js` to work.
+    To use API token diectly do these changes in the following files -
+
+    In `index.ts`
     ```diff
     - client.coc = new ClashClient({ cache: true });
-    + client.coc = new ClashClient({ keys: [process.env.CLASH_TOKEN], cache: true });
+    + client.coc = new ClashClient({ keys: [ENV.CLASH_TOKEN], cache: true });
     ```
 
+    In `utils/EnvValidator.ts`
+    ```diff
+    interface EnviromentVariables {
+        // ...
+    +   CLASH_TOKEN: string;
+    }
+
+    const envVarsSchema = joi
+    .object()
+    .keys({
+        // ...
+    +   CLASH_TOKEN: joi.string().required(),
+    })
+    .unknown();
+    ```
 - **Q:** Why adding commands to the test guild only and not globally?
     - **A:** When adding commands globally then it takes at least 1 hour ~ to cache commands on discord side and then reflect in the servers in which bot is added into `but not much when we are adding commands specifically for guild only`. So, it is better to add commands to the test guild only when developing.
 
