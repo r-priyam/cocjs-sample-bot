@@ -34,6 +34,7 @@ client.on('interactionCreate', async (interaction) => {
 
 async function main() {
     const commandFiles = fs.readdirSync(path.join(__dirname, 'commands')).filter((file) => file.endsWith('.js'));
+    const clashEvents = fs.readdirSync(path.join(__dirname, 'clashEvents')).filter((file) => file.endsWith('.js'));
 
     for (const file of commandFiles) {
         const command = await import(path.join(__dirname, `commands/${file}`));
@@ -48,6 +49,23 @@ async function main() {
         keyName: ENV.PROJECT_NAME
     });
     await client.login(ENV.BOT_TOKEN);
+
+    client.coc.events.addClans(ENV.CLAN_TAGS.split(','));
+    for (const file of clashEvents) {
+        const event = await import(path.join(__dirname, `clashEvents/${file}`));
+
+        // Set custom clan events. Same can be done for war and player too.
+        client.coc.events.setClanEvent({
+            name: event.name,
+            filter: (...args) => event.filter(...args)
+        });
+
+        // register callback to execute when event is triggered
+        client.coc.on(event.name, async (...args) => await event.execute(client, ...args));
+    }
+
+    await client.login(process.env.BOT_TOKEN);
+    await client.coc.events.init();
 }
 
 main()

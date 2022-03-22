@@ -11,6 +11,8 @@ interface EnviromentVariables {
     BOT_CLIENT_ID: string;
     TEST_GUILD_ID: string;
     BOT_TOKEN: string;
+    CLAN_TAGS: string;
+    MEMBER_REPORTING_CHANNEL_ID: string;
 }
 
 const envVarsSchema = joi
@@ -22,7 +24,9 @@ const envVarsSchema = joi
         PROJECT_NAME: joi.string().required(),
         BOT_CLIENT_ID: joi.string().required(),
         TEST_GUILD_ID: joi.string().required(),
-        BOT_TOKEN: joi.string().required()
+        BOT_TOKEN: joi.string().required(),
+        CLAN_TAGS: joi.string().required(),
+        MEMBER_REPORTING_CHANNEL_ID: joi.string().required()
     })
     .unknown();
 
