@@ -5,7 +5,7 @@
 
 <div align="center">
 
-## **Clash of Clans smaple discord bot using [NodeJs](https://nodejs.org/en/)**
+## **Clash of Clans sample discord bot using [NodeJs](https://nodejs.org/en/)**
 
 
 [![Test](https://github.com/r-priyam/cocjs-smaple-bot/actions/workflows/test.yml/badge.svg)](https://github.com/r-priyam/cocjs-smaple-bot/actions/workflows/test.yml)
