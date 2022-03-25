@@ -1,7 +1,7 @@
 import { Prisma } from '@prisma/client';
 import type { CommandInteraction } from 'discord.js';
 
-async function getLinkedClanTag(interaction: CommandInteraction) {
+export async function getLinkedClanTag(interaction: CommandInteraction) {
     const data = await interaction.client.db.clans.findFirst({
         where: { discordId: interaction.user.id },
         select: { clanTag: true }
@@ -10,7 +10,7 @@ async function getLinkedClanTag(interaction: CommandInteraction) {
     return data ? data.clanTag : null;
 }
 
-async function linkClanTag(interaction: CommandInteraction, clanTag: string) {
+export async function linkClanTag(interaction: CommandInteraction, clanTag: string) {
     try {
         await interaction.client.db.clans.create({ data: { discordId: interaction.user.id, clanTag } });
         await interaction.reply({ content: `Successfully linked clan tag ${clanTag} to your account!` });
@@ -22,5 +22,3 @@ async function linkClanTag(interaction: CommandInteraction, clanTag: string) {
         }
     }
 }
-
-export { getLinkedClanTag, linkClanTag };

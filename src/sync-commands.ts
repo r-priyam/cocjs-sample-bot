@@ -15,7 +15,7 @@ async function syncCommands() {
 
     for (const file of commandFiles) {
         const command = await import(path.join(__dirname, `commands/${file}`));
-        commands.push(command.data.toJSON());
+        commands.push(command.SlashCommand.toJSON());
     }
 
     // guild only commands syncs fast, helpful for testing

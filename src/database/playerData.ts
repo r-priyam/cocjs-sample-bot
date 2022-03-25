@@ -1,7 +1,7 @@
 import { Prisma } from '@prisma/client';
 import type { CommandInteraction } from 'discord.js';
 
-async function getLinkedPlayerTags(interaction: CommandInteraction) {
+export async function getLinkedPlayerTags(interaction: CommandInteraction) {
     const data = await interaction.client.db.players.findFirst({
         where: { discordId: interaction.user.id },
         select: { playerTag: true }
@@ -10,7 +10,7 @@ async function getLinkedPlayerTags(interaction: CommandInteraction) {
     return data ? data.playerTag : null;
 }
 
-async function linkPlayerTag(interaction: CommandInteraction, playerTag: string) {
+export async function linkPlayerTag(interaction: CommandInteraction, playerTag: string) {
     try {
         await interaction.client.db.players.create({ data: { discordId: interaction.user.id, playerTag } });
         await interaction.reply({ content: `Successfully linked player tag - ${playerTag} to your account!` });
@@ -22,5 +22,3 @@ async function linkPlayerTag(interaction: CommandInteraction, playerTag: string)
         }
     }
 }
-
-export { getLinkedPlayerTags, linkPlayerTag };

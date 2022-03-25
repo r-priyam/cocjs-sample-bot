@@ -21,7 +21,7 @@ async function main() {
     for (const file of commandFiles) {
         const command = await import(path.join(__dirname, `commands/${file}`));
         // we only need the execute function of the command to run it
-        client.commands.set(command.data.name, { execute: command.execute });
+        client.commands.set(command.SlashCommand.name, { execute: command.execute });
     }
 
     await client.coc.login({

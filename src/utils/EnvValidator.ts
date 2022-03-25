@@ -31,10 +31,9 @@ const envVarsSchema = joi
     .unknown();
 
 const validate = envVarsSchema.prefs({ errors: { label: 'key' } }).validate(process.env);
-const ENV = validate.value as EnviromentVariables;
 
 if (validate.error) {
     throw new Error(`Config validation error: ${validate.error.message}`);
 }
 
-export { ENV };
+export const ENV = validate.value as EnviromentVariables;
