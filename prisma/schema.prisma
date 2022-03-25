@@ -19,7 +19,7 @@ model players {
 model clans {
   id        Int    @id @default(autoincrement())
   discordId String
-  clanTag String @db.VarChar(14)
+  clanTag   String @db.VarChar(14)
 
   @@unique([discordId, clanTag])
   @@index([discordId])
