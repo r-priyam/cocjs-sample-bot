@@ -2,6 +2,7 @@
 
 import util from 'util';
 import dayjs from 'dayjs';
+
 import { style } from '@ogma/styler';
 
 const ColeredTag = (type: string) => {
@@ -42,7 +43,9 @@ export default class Logger {
     }
 
     private static clean(message: string | any) {
-        if (typeof message === 'string') return message;
+        if (typeof message === 'string') {
+            return message;
+        }
         return util.inspect(message, { depth: Infinity });
     }
 }

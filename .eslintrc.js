@@ -1,4 +1,7 @@
 module.exports = {
     extends: ['@antfu', 'plugin:prettier/recommended'],
-    plugins: ['prettier']
+    plugins: ['prettier'],
+    rules: {
+        curly: [2, 'all']
+    }
 };
