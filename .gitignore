@@ -19,6 +19,10 @@ lerna-debug.log*
 .settings/
 *.sublime-workspace
 
+# Yarn files
+.yarn/install-state.gz
+.yarn/build-state.yml
+
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json
