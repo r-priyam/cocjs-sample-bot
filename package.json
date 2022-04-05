@@ -17,7 +17,7 @@
     },
     "dependencies": {
         "@ogma/styler": "^1.0.0",
-        "@prisma/client": "^3.11.1",
+        "@prisma/client": "^3.12.0",
         "clashofclans.js": "^2.6.1",
         "dayjs": "^1.11.0",
         "discord.js": "^13.6.0",
@@ -37,7 +37,7 @@
         "husky": "^7.0.4",
         "joi": "^17.6.0",
         "prettier": "^2.6.2",
-        "prisma": "^3.11.1",
+        "prisma": "^3.12.0",
         "rimraf": "^3.0.2",
         "ts-node": "^10.7.0",
         "typescript": "^4.6.3"
