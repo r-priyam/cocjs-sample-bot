@@ -1,7 +1,9 @@
-import { SlashCommandBuilder } from '@discordjs/builders';
-import { MessageEmbed } from 'discord.js';
-import type { CommandInteraction } from 'discord.js';
 import { HTTPError, Util } from 'clashofclans.js';
+import type { CommandInteraction } from 'discord.js';
+import { MessageEmbed } from 'discord.js';
+
+import { SlashCommandBuilder } from '@discordjs/builders';
+
 import { getLinkedPlayerTags } from '../database/playerData';
 
 export const SlashCommand = new SlashCommandBuilder()

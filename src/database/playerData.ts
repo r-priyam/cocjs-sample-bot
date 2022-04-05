@@ -1,5 +1,6 @@
-import { Prisma } from '@prisma/client';
 import type { CommandInteraction } from 'discord.js';
+
+import { Prisma } from '@prisma/client';
 
 export async function getLinkedPlayerTags(interaction: CommandInteraction) {
     const data = await interaction.client.db.players.findFirst({

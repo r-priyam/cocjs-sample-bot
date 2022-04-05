@@ -1,10 +1,14 @@
-import path from 'path';
 import fs from 'node:fs';
-import { REST } from '@discordjs/rest';
+
+import path from 'path';
 import { Routes } from 'discord-api-types/v9';
 import env from 'dotenv';
-import Logger from './utils/Logger';
+
+import { REST } from '@discordjs/rest';
+
 import { ENV } from './utils/EnvValidator';
+import Logger from './utils/Logger';
+
 env.config();
 
 async function syncCommands() {

@@ -1,6 +1,8 @@
-import { SlashCommandBuilder } from '@discordjs/builders';
 import { HTTPError, Util } from 'clashofclans.js';
 import type { CommandInteraction } from 'discord.js';
+
+import { SlashCommandBuilder } from '@discordjs/builders';
+
 import { linkClanTag } from '../database/clanData';
 import { linkPlayerTag } from '../database/playerData';
 

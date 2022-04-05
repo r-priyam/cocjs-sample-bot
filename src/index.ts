@@ -1,10 +1,13 @@
-import path from 'path';
 import fs from 'node:fs';
-import { Client, Collection, Intents } from 'discord.js';
+
+import path from 'path';
 import { Client as ClashClient } from 'clashofclans.js';
+import { Client, Collection, Intents } from 'discord.js';
+
 import { PrismaClient } from '@prisma/client';
-import Logger from './utils/Logger';
+
 import { ENV } from './utils/EnvValidator';
+import Logger from './utils/Logger';
 
 async function main() {
     const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
