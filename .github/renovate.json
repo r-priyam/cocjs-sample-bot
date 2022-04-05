@@ -1,0 +1,4 @@
+{
+    "extends": ["github>sapphiredev/readme:sapphire-renovate", ":disableDependencyDashboard"],
+    "schedule": ["at any time"]
+}
