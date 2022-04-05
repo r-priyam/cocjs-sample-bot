@@ -3,7 +3,9 @@ import type { Client, Interaction } from 'discord.js';
 export const name = 'interactionCreate';
 
 export async function execute(client: Client, interaction: Interaction) {
-    if (!interaction.isCommand()) return;
+    if (!interaction.isCommand()) {
+        return;
+    }
 
     const command = client.commands.get(interaction.commandName);
 
