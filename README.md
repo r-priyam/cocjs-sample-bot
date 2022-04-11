@@ -8,7 +8,7 @@
 ## **Clash of Clans sample discord bot using [NodeJs](https://nodejs.org/en/)**
 
 
-[![Test](https://github.com/r-priyam/cocjs-smaple-bot/actions/workflows/test.yml/badge.svg)](https://github.com/r-priyam/cocjs-smaple-bot/actions/workflows/test.yml)
+[![Continuous Integration](https://github.com/r-priyam/cocjs-smaple-bot/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/r-priyam/cocjs-smaple-bot/actions/workflows/continuous-integration.yml)
 
 [![discord.js-badge][discord.js-badge]][discord.js]
 [![clashofclans.js-badge][clashofclans.js-badge]][clashofclans.js]
