@@ -21,6 +21,15 @@
 
 This sample bot project aims to help you get started with interacting [Clash of Clans API](https://developer.clashofclans.com/) using `discord.js` and `clashofclans.js`.
 
+## Features
+
+- 📝 Databse integration (PostgreSQL)
+- ✍️ Fully typechecked code
+- 🚀 3 commands and 2 events
+- 😎 It just works
+
+More thing around, figure out on yourself 🤷‍♂️
+
 ## Before You Start
 
 Before you dive into running this project, I expect you to have these things ready:
