@@ -1,7 +1,6 @@
 import type { Clan } from 'clashofclans.js';
 import type { Client } from 'discord.js';
-
-import { ENV } from '../utils/EnvValidator';
+import { config } from '../utils/EnvValidator';
 
 export const name = 'onMemberJoin';
 
@@ -15,18 +14,21 @@ export function filter(oldClan: Clan, newClan: Clan) {
     if (newMembers.length === 0) {
         return false;
     }
+
     return true;
 }
 
 export async function execute(client: Client, oldClan: Clan, newClan: Clan) {
-    const channel = await client.channels.fetch(ENV.MEMBER_REPORTING_CHANNEL_ID, { force: false });
+    const channel = await client.channels.fetch(config.memberReportingChannelId, { force: false });
     if (!channel) {
         return;
     }
 
     newClan.members.forEach(async (member) => {
         if (!oldClan.members.find((oldMember) => oldMember.tag === member.tag)) {
-            channel.isText() && (await channel.send(`${member.name} joined ${newClan.name}`));
+            if (channel.isText()) {
+                await channel.send(`${member.name} joined ${newClan.name}`);
+            }
         }
     });
 }

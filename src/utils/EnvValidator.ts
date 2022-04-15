@@ -4,29 +4,27 @@ import joi from 'joi';
 env.config();
 
 interface EnviromentVariables {
-    DATABASE_URL: string;
-    CLASH_EMAIL: string;
-    CLASH_PASSWORD: string;
-    PROJECT_NAME: string;
-    BOT_CLIENT_ID: string;
-    TEST_GUILD_ID: string;
-    BOT_TOKEN: string;
-    CLAN_TAGS: string;
-    MEMBER_REPORTING_CHANNEL_ID: string;
+    clashEmail: string;
+    clashPassword: string;
+    projectName: string;
+    botClientId: string;
+    testGuildId: string;
+    botToken: string;
+    clanTags: string;
+    memberReportingChannelId: string;
 }
 
 const envVarsSchema = joi
     .object()
     .keys({
-        DATABASE_URL: joi.string().valid().required(),
-        CLASH_EMAIL: joi.string().email().required(),
-        CLASH_PASSWORD: joi.string().required(),
-        PROJECT_NAME: joi.string().required(),
-        BOT_CLIENT_ID: joi.string().required(),
-        TEST_GUILD_ID: joi.string().required(),
-        BOT_TOKEN: joi.string().required(),
-        CLAN_TAGS: joi.string().required(),
-        MEMBER_REPORTING_CHANNEL_ID: joi.string().required()
+        clashEmail: joi.string().email().required(),
+        clashPassword: joi.string().required(),
+        projectName: joi.string().required(),
+        botClientId: joi.string().required(),
+        testGuildId: joi.string().required(),
+        botToken: joi.string().required(),
+        clanTags: joi.string().required(),
+        memberReportingChannelId: joi.string().required()
     })
     .unknown();
 
@@ -36,4 +34,4 @@ if (validate.error) {
     throw new Error(`Config validation error: ${validate.error.message}`);
 }
 
-export const ENV = validate.value as EnviromentVariables;
+export const config = validate.value as EnviromentVariables;

@@ -15,7 +15,7 @@ export async function linkClanTag(interaction: CommandInteraction, clanTag: stri
     try {
         await interaction.client.db.clans.create({ data: { discordId: interaction.user.id, clanTag } });
         await interaction.reply({ content: `Successfully linked clan tag ${clanTag} to your account!` });
-    } catch (error) {
+    } catch (error: unknown) {
         if (error instanceof Prisma.PrismaClientKnownRequestError) {
             if (error.code === 'P2002') {
                 await interaction.editReply({ content: `Clan tag - ${clanTag} is already linked to your account` });

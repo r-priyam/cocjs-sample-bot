@@ -1,12 +1,10 @@
-import fs from 'node:fs';
-
-import path from 'path';
+import { PrismaClient } from '@prisma/client';
 import { Client as ClashClient } from 'clashofclans.js';
 import { Client, Collection, Intents } from 'discord.js';
-
-import { PrismaClient } from '@prisma/client';
-
-import { ENV } from './utils/EnvValidator';
+import fs from 'node:fs';
+import path from 'path';
+import { config } from './utils/EnvValidator';
+import { ClashEventFile, CommandFile, DiscordEventFile } from './utils/interfaces';
 import Logger from './utils/Logger';
 
 async function main() {
@@ -19,43 +17,52 @@ async function main() {
     client.logger = new Logger();
     client.coc = new ClashClient({ cache: true });
     client.db = new PrismaClient();
-    client.coc.events.addClans(ENV.CLAN_TAGS.split(','));
+    client.coc.events.addClans(config.clanTags.split(','));
 
     for (const file of commandFiles) {
-        const command = await import(path.join(__dirname, `commands/${file}`));
-        // we only need the execute function of the command to run it
-        client.commands.set(command.SlashCommand.name, { execute: command.execute });
+        const command = (await import(path.join(__dirname, `commands/${file}`))) as CommandFile;
+        // We only need the execute function of the command to run it
+        client.commands.set(command.slashCommand.name, { execute: command.execute });
     }
 
     await client.coc.login({
-        email: ENV.CLASH_EMAIL,
-        password: ENV.CLASH_PASSWORD!,
+        email: config.clashEmail,
+        password: config.clashPassword,
         keyCount: 1,
-        keyName: ENV.PROJECT_NAME
+        keyName: config.projectName
     });
 
     for (const file of events) {
-        const event = await import(path.join(__dirname, `events/${file}`));
-        // register discord events callbacks
-        client.on(event.name, async (...args) => await event.execute(client, ...args));
+        const event = (await import(path.join(__dirname, `events/${file}`))) as DiscordEventFile;
+        // Register discord events callbacks
+        client.on(event.name, async (...args) => {
+            event.execute(client, ...args);
+        });
     }
 
     for (const file of clashEvents) {
-        const event = await import(path.join(__dirname, `clashEvents/${file}`));
+        const event = (await import(path.join(__dirname, `clashEvents/${file}`))) as ClashEventFile;
         // Set custom clan events. Same can be done for war and player too.
         client.coc.events.setClanEvent({
             name: event.name,
             filter: (...args) => event.filter(...args)
         });
-        // register callback to execute when event is triggered
-        client.coc.on(event.name, async (...args) => await event.execute(client, ...args));
+        // Register callback to execute when event is triggered
+        client.coc.on(event.name, async (...args) => {
+            event.execute(client, ...args);
+        });
     }
 
-    client.on('error', (error) => client.logger.error(error, { label: 'ERROR' }));
-    client.on('warn', (error) => client.logger.warn(error, { label: 'WARN' }));
+    client.on('error', (error) => {
+        client.logger.error(error, { label: 'ERROR' });
+    });
 
-    await client.login(ENV.BOT_TOKEN);
+    client.on('warn', (error) => {
+        client.logger.warn(error, { label: 'WARN' });
+    });
+
+    await client.login(config.botToken);
     await client.coc.events.init();
 }
 
-main();
+void main();

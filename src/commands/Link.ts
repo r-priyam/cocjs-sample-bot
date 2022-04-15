@@ -1,12 +1,10 @@
+import { SlashCommandBuilder } from '@discordjs/builders';
 import { HTTPError, Util } from 'clashofclans.js';
 import type { CommandInteraction } from 'discord.js';
-
-import { SlashCommandBuilder } from '@discordjs/builders';
-
 import { linkClanTag } from '../database/clanData';
 import { linkPlayerTag } from '../database/playerData';
 
-export const SlashCommand = new SlashCommandBuilder()
+export const slashCommand = new SlashCommandBuilder()
     .setName('link')
     .setDescription('Link player or clan to your discord account')
     .addStringOption((option) =>
@@ -24,7 +22,7 @@ export async function execute(interaction: CommandInteraction) {
     const tag = interaction.options.getString('tag');
 
     if (!Util.isValidTag(Util.formatTag(tag!))) {
-        return interaction.reply({ content: `${tag} isn't a valid tag!`, ephemeral: true });
+        return interaction.reply({ content: `${tag!} isn't a valid tag!`, ephemeral: true });
     }
 
     await interaction.deferReply();
@@ -32,9 +30,9 @@ export async function execute(interaction: CommandInteraction) {
         try {
             const player = await interaction.client.coc.getPlayer(tag!);
             await linkPlayerTag(interaction, player.tag);
-        } catch (error) {
+        } catch (error: unknown) {
             if (error instanceof HTTPError && error.message === 'notFound') {
-                await interaction.editReply({ content: `$Failed to find player with ${tag}!` });
+                await interaction.editReply({ content: `$Failed to find player with ${tag!}!` });
             } else {
                 await interaction.editReply({ content: 'Something went wrong, try again!' });
             }
@@ -43,9 +41,9 @@ export async function execute(interaction: CommandInteraction) {
         try {
             const clan = await interaction.client.coc.getClan(tag!);
             await linkClanTag(interaction, clan.tag);
-        } catch (error) {
+        } catch (error: unknown) {
             if (error instanceof HTTPError && error.message === 'notFound') {
-                await interaction.editReply({ content: `$Failed to find clan with ${tag}!` });
+                await interaction.editReply({ content: `$Failed to find clan with ${tag!}!` });
             } else {
                 await interaction.editReply({ content: 'Something went wrong, try again!' });
             }

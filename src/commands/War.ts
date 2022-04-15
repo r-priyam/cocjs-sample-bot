@@ -1,9 +1,7 @@
+import { SlashCommandBuilder } from '@discordjs/builders';
 import { HTTPError, Util } from 'clashofclans.js';
 import type { CommandInteraction } from 'discord.js';
 import { MessageEmbed } from 'discord.js';
-
-import { SlashCommandBuilder } from '@discordjs/builders';
-
 import { getLinkedClanTag } from '../database/clanData';
 
 const warStates: Record<string, string> = {
@@ -12,7 +10,7 @@ const warStates: Record<string, string> = {
     warEnded: 'War ended'
 };
 
-export const SlashCommand = new SlashCommandBuilder()
+export const slashCommand = new SlashCommandBuilder()
     .setName('war')
     .setDescription('Get the info of a clan war')
     .addStringOption((option) => option.setName('tag').setDescription('The clan tag'));
@@ -29,16 +27,17 @@ export async function execute(interaction: CommandInteraction) {
                 ephemeral: true
             });
         }
+
         clanTag = tag;
-    } else if (!Util.isValidTag(Util.formatTag(clanTag!))) {
+    } else if (!Util.isValidTag(Util.formatTag(clanTag))) {
         return interaction.reply({ content: `${clanTag} isn't a valid clan tag!`, ephemeral: true });
     }
 
     try {
         await interaction.deferReply();
-        const war = await interaction.client.coc.getClanWar(clanTag!);
+        const war = await interaction.client.coc.getClanWar(clanTag);
         if (!war) {
-            return interaction.editReply({ content: `${clanTag} isn't in a war!` });
+            return await interaction.editReply({ content: `${clanTag} isn't in a war!` });
         }
 
         const embed = new MessageEmbed()
@@ -55,7 +54,7 @@ export async function execute(interaction: CommandInteraction) {
             .setURL(`https://link.clashofclans.com/en?action=OpenClanProfile&tag=${war.clan.tag.replace(/#/g, '')}`)
             .setTimestamp();
         await interaction.editReply({ embeds: [embed] });
-    } catch (error) {
+    } catch (error: unknown) {
         if (error instanceof HTTPError && error.message === 'notFound') {
             await interaction.editReply({ content: `$Failed to find clan with ${clanTag}!` });
         } else if (error instanceof HTTPError && error.reason === 'privateWarLog') {

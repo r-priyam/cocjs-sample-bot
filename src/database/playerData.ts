@@ -15,7 +15,7 @@ export async function linkPlayerTag(interaction: CommandInteraction, playerTag: 
     try {
         await interaction.client.db.players.create({ data: { discordId: interaction.user.id, playerTag } });
         await interaction.reply({ content: `Successfully linked player tag - ${playerTag} to your account!` });
-    } catch (error) {
+    } catch (error: unknown) {
         if (error instanceof Prisma.PrismaClientKnownRequestError) {
             if (error.code === 'P2002') {
                 await interaction.editReply({ content: `Player tag - ${playerTag} is already linked to your account` });

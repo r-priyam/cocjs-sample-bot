@@ -1,12 +1,10 @@
+import { SlashCommandBuilder } from '@discordjs/builders';
 import { HTTPError, Util } from 'clashofclans.js';
 import type { CommandInteraction } from 'discord.js';
 import { MessageEmbed } from 'discord.js';
-
-import { SlashCommandBuilder } from '@discordjs/builders';
-
 import { getLinkedClanTag } from '../database/clanData';
 
-export const SlashCommand = new SlashCommandBuilder()
+export const slashCommand = new SlashCommandBuilder()
     .setName('clan')
     .setDescription('Get the info of a clan')
     .addStringOption((option) => option.setName('tag').setDescription('The clan tag'));
@@ -23,14 +21,15 @@ export async function execute(interaction: CommandInteraction) {
                 ephemeral: true
             });
         }
+
         clanTag = tag;
-    } else if (!Util.isValidTag(Util.formatTag(clanTag!))) {
+    } else if (!Util.isValidTag(Util.formatTag(clanTag))) {
         return interaction.reply({ content: `${clanTag} isn't a valid clan tag!`, ephemeral: true });
     }
 
     try {
         await interaction.deferReply();
-        const clan = await interaction.client.coc.getClan(clanTag!);
+        const clan = await interaction.client.coc.getClan(clanTag);
         const embed = new MessageEmbed()
             .setTitle(`${clan.name}`)
             .setThumbnail(clan.badge.url)
@@ -39,17 +38,17 @@ export async function execute(interaction: CommandInteraction) {
                 { name: 'Leader', value: clan.members.find((member) => member.role === 'leader')!.name, inline: true },
                 { name: 'Description', value: `${clan.description}`, inline: false },
                 { name: 'Members', value: `${clan.memberCount}`, inline: false },
-                { name: 'Location', value: `${clan.location?.name}`, inline: false },
+                { name: 'Location', value: `${clan.location?.name ?? 'Not set'}`, inline: false },
                 { name: 'Trophies', value: `${clan.points}`, inline: false },
                 { name: 'Versus Trophies', value: `${clan.versusPoints}`, inline: false },
-                { name: 'Clan War League', value: `${clan.warLeague?.name}`, inline: false },
-                { name: 'Chat Language', value: `${clan.chatLanguage?.name}`, inline: false }
+                { name: 'Clan War League', value: `${clan.warLeague?.name ?? 'No league'}`, inline: false },
+                { name: 'Chat Language', value: `${clan.chatLanguage?.name ?? 'Not set'}`, inline: false }
             )
             .setColor([0xe74c3c, 0x2980b9, 0x1abc9c, 0xe67e22, 0xf1c40f][Math.floor(Math.random() * 6)])
             .setURL(`https://link.clashofclans.com/en?action=OpenClanProfile&tag=${clan.tag.replace(/#/g, '')}`)
             .setTimestamp();
         await interaction.editReply({ embeds: [embed] });
-    } catch (error) {
+    } catch (error: unknown) {
         if (error instanceof HTTPError && error.message === 'notFound') {
             await interaction.editReply({ content: `$Failed to find clan with ${clanTag}!` });
         } else {

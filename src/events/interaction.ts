@@ -10,12 +10,13 @@ export async function execute(client: Client, interaction: Interaction) {
     const command = client.commands.get(interaction.commandName);
 
     if (!command) {
-        return await interaction.reply({ content: 'Command not found!', ephemeral: true });
+        await interaction.reply({ content: 'Command not found!', ephemeral: true });
+        return;
     }
 
     try {
         await command.execute(interaction);
-    } catch (error) {
+    } catch (error: unknown) {
         client.logger.error(error, { label: 'COMMAND' });
         await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
     }
