@@ -1,0 +1,12 @@
+{
+    "extends": ["xo", "xo-typescript", "plugin:prettier/recommended"],
+    "plugins": ["prettier"],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
+    "rules": {
+        "curly": [2, "all"],
+        "no-await-in-loop": "off"
+    }
+}
