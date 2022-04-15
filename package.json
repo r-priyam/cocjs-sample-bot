@@ -1,6 +1,6 @@
 {
     "name": "cocjs-smaple-bot",
-    "version": "1.0.0",
+    "version": "0.0.0",
     "description": "Sample discord bot using clashofclans.js and discord.js",
     "repository": "https://github.com/r-priyam/cocjs-smaple-bot.git",
     "license": "MIT",
@@ -11,6 +11,8 @@
         "lint": "eslint \"**/*.ts\"",
         "lint:fix": "eslint \"**/*.ts\" --fix",
         "prepare": "husky install",
+        "release": "standard-version",
+        "release:preview": "standard-version --dry-run",
         "start": "npm run build && node --enable-source-maps dist/src/index.js",
         "sync:commands": "npm run build && node --enable-source-maps dist/src/sync-commands.js",
         "typecheck": "tsc"
@@ -42,6 +44,7 @@
         "prettier": "^2.6.2",
         "prisma": "^3.12.0",
         "rimraf": "^3.0.2",
+        "standard-version": "^9.3.2",
         "ts-node": "^10.7.0",
         "typescript": "^4.6.3"
     },
