@@ -15,6 +15,9 @@
 ![https://img.shields.io/github/issues/r-priyam/cocjs-smaple-bot](https://img.shields.io/github/issues/r-priyam/cocjs-smaple-bot)
 ![https://img.shields.io/github/forks/r-priyam/cocjs-smaple-bot](https://img.shields.io/github/forks/r-priyam/cocjs-smaple-bot)
 ![https://img.shields.io/github/license/r-priyam/cocjs-smaple-bot](https://img.shields.io/github/license/r-priyam/cocjs-smaple-bot)
+
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/r-priyam/cocjs-smaple-bot.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/r-priyam/cocjs-smaple-bot/alerts/)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/r-priyam/cocjs-smaple-bot.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/r-priyam/cocjs-smaple-bot/context:javascript)
 </div>
 
 ## Introduction
