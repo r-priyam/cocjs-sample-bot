@@ -1,31 +1,28 @@
-// Github.com/csuvajit/escapebot/blob/master/src/bot/util/Logger.ts
-
-import util from 'util';
 import dayjs from 'dayjs';
-
-import { style } from '@ogma/styler';
+import pc from 'picocolors';
+import util from 'util';
 
 const coleredTag = (type: string) => {
     switch (type) {
         case 'debug':
-            return style.yellow.bold.apply('[DEBUG]');
+            return pc.magenta(pc.bold('[DEBUG]'));
         case 'info':
-            return style.cyan.bold.apply('[INFO ]');
+            return pc.cyan(pc.bold('[INFO ]'));
         case 'warn':
-            return style.magenta.apply('[WARN ]');
+            return pc.yellow(pc.bold('[WARN ]'));
         case 'error':
-            return style.red.apply('[ERROR]');
+            return pc.red(pc.bold('[ERROR]'));
         default:
-            return style.cyan.bold.apply('[INFO ]');
+            return pc.cyan(pc.bold('[INFO ]'));
     }
 };
 
 export default class Logger {
     private static write(message: string | any, { error, label, tag }: { error?: boolean; label?: string; tag: string }) {
-        const timestamp = style.blue.bold.apply(dayjs().format('DD-MM-YYYY hh:mm:ss'));
+        const timestamp = pc.blue(pc.bold(dayjs().format('DD-MM-YYYY hh:mm:ss')));
         const content = this.clean(message);
         const stream = error ? process.stderr : process.stdout;
-        stream.write(`[${timestamp}] ${coleredTag(tag)} » ${label ? `[${style.color(214).bold.apply(label)}] » ` : ''}${content}\n`);
+        stream.write(`[${timestamp}] ${coleredTag(tag)} » ${label ? `${pc.cyan(`[${label}]`)} » ` : ''}${pc.white(content)}\n`);
     }
 
     private static clean(message: string | any) {

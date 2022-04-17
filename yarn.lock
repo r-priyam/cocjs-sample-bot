@@ -356,22 +356,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ogma/common@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@ogma/common@npm:1.0.0"
-  checksum: 36e4c5f745d2b9a434a67c69d15f2af1ce0ef516479313f1cd74e7d635fc0abd4de15b23096f954a2c5c43c816b7dc079f53a333e079d45830eb17ddd50a7fd7
-  languageName: node
-  linkType: hard
-
-"@ogma/styler@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@ogma/styler@npm:1.0.0"
-  dependencies:
-    "@ogma/common": 1.0.0
-  checksum: f6c4a1834878ca6c6cd07d59b583b3224cd74897cf2e55a622b2c8ac54d2c677a826ffdd440b2bebccfa5af02d779825c3920583e3a65ed2cd2e72e7eda0261a
-  languageName: node
-  linkType: hard
-
 "@prisma/client@npm:^3.12.0":
   version: 3.12.0
   resolution: "@prisma/client@npm:3.12.0"
@@ -879,7 +863,6 @@ __metadata:
     "@commitlint/cli": ^16.2.3
     "@commitlint/config-conventional": ^16.2.1
     "@discordjs/rest": ^0.3.0
-    "@ogma/styler": ^1.0.0
     "@prisma/client": ^3.12.0
     "@types/node": ^17.0.21
     "@types/prettier": ^2
@@ -897,6 +880,7 @@ __metadata:
     eslint-plugin-prettier: ^4.0.0
     husky: ^7.0.4
     joi: ^17.6.0
+    picocolors: ^1.0.0
     prettier: ^2.6.2
     prisma: ^3.12.0
     rimraf: ^3.0.2
@@ -2797,6 +2781,13 @@ __metadata:
   version: 4.0.0
   resolution: "path-type@npm:4.0.0"
   checksum: 5b1e2daa247062061325b8fdbfd1fb56dde0a448fb1455453276ea18c60685bdad23a445dc148cf87bc216be1573357509b7d4060494a6fd768c7efad833ee45
+  languageName: node
+  linkType: hard
+
+"picocolors@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "picocolors@npm:1.0.0"
+  checksum: a2e8092dd86c8396bdba9f2b5481032848525b3dc295ce9b57896f931e63fc16f79805144321f72976383fc249584672a75cc18d6777c6b757603f372f745981
   languageName: node
   linkType: hard
 
