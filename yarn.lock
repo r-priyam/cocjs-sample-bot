@@ -878,7 +878,7 @@ __metadata:
     "@typescript-eslint/parser": ^5.19.0
     clashofclans.js: ^2.6.1
     dayjs: ^1.11.1
-    discord-api-types: ^0.31.1
+    discord-api-types: ^0.31.2
     discord.js: ^13.6.0
     dotenv: ^16.0.0
     eslint: ^8.13.0
@@ -1349,10 +1349,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"discord-api-types@npm:^0.31.1":
-  version: 0.31.1
-  resolution: "discord-api-types@npm:0.31.1"
-  checksum: 5a18e512b549b75d55892b0dbc2dc7c46526bee0d001b73d41d144f4653de847c96b9c57342a32479af738f46acd80ee21686dced9fe0184dcac86b669b31f18
+"discord-api-types@npm:^0.31.2":
+  version: 0.31.2
+  resolution: "discord-api-types@npm:0.31.2"
+  checksum: 928d4f57f4c1ace0baf1d3b2c3ab4a4a5107f100217ce889a6e00ad365115fd328a0b922dbc62af6b6ccac9552ffd7ec3d07f4c8820502c5b55d9f2e5382dfba
   languageName: node
   linkType: hard
 
