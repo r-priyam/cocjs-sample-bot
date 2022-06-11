@@ -39,7 +39,7 @@
         "eslint-config-xo": "^0.40.0",
         "eslint-config-xo-typescript": "^0.50.0",
         "eslint-plugin-prettier": "^4.0.0",
-        "husky": "^7.0.4",
+        "husky": "^8.0.1",
         "joi": "^17.6.0",
         "prettier": "^2.6.2",
         "prisma": "^3.12.0",
