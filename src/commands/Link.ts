@@ -12,8 +12,7 @@ export const slashCommand = new SlashCommandBuilder()
             .setName('type')
             .setDescription('Choose what to link')
             .setRequired(true)
-            .addChoice('Player', 'link_player')
-            .addChoice('Clan', 'link_clan')
+            .addChoices({ name: 'Player', value: 'link_player' }, { name: 'Clan', value: 'link_clan' })
     )
     .addStringOption((option) => option.setName('tag').setDescription('The tag to link').setRequired(true));
 
