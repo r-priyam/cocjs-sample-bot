@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2](https://github.com/r-priyam/cocjs-smaple-bot/compare/v0.0.1...v0.0.2) (2022-06-11)
+
+
+### Features
+
+* use picocolors ([ff96505](https://github.com/r-priyam/cocjs-smaple-bot/commit/ff965050429aa884897103d05bbe2d41739ad489))
+
+
+### Bug Fixes
+
+* changelog ([7d01f5a](https://github.com/r-priyam/cocjs-smaple-bot/commit/7d01f5ab653f5ac7e84ecf382f4b596eeb67dbbe))
+* **deps:** update dependency @discordjs/rest to ^0.4.1 ([#12](https://github.com/r-priyam/cocjs-smaple-bot/issues/12)) ([1d0b048](https://github.com/r-priyam/cocjs-smaple-bot/commit/1d0b048a7d544cfc7577352133a9e991e0d6d446))
+* typecheck ([af30a06](https://github.com/r-priyam/cocjs-smaple-bot/commit/af30a0640142405a9da2917451d12deb96197839))
+
 ### 0.0.1 (2022-04-15)
 
 

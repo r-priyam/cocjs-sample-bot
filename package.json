@@ -1,6 +1,6 @@
 {
     "name": "coc.js-sample-bot",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Sample discord bot using clashofclans.js and discord.js",
     "repository": "https://github.com/r-priyam/cocjs-smaple-bot.git",
     "license": "MIT",
