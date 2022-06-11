@@ -41,7 +41,7 @@ export default class Logger {
         (this.constructor as typeof Logger).write(message, { label, tag: 'info' });
     }
 
-    public error(message: string, { label }: { label?: string }) {
+    public error(message: any, { label }: { label?: string }) {
         (this.constructor as typeof Logger).write(message, { error: true, label, tag: 'error' });
     }
 
