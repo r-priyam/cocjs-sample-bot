@@ -11,5 +11,5 @@ export interface DiscordEventFile {
 export interface ClashEventFile {
     name: string;
     filter: (...args: unknown[]) => boolean;
-    execute: (...args: unknown[]) => void;
+    execute: (...args: unknown[]) => Promise<void>;
 }

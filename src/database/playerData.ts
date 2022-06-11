@@ -1,6 +1,5 @@
-import type { CommandInteraction } from 'discord.js';
-
 import { Prisma } from '@prisma/client';
+import type { CommandInteraction } from 'discord.js';
 
 export async function getLinkedPlayerTags(interaction: CommandInteraction) {
     const data = await interaction.client.db.players.findFirst({
@@ -16,10 +15,8 @@ export async function linkPlayerTag(interaction: CommandInteraction, playerTag: 
         await interaction.client.db.players.create({ data: { discordId: interaction.user.id, playerTag } });
         await interaction.reply({ content: `Successfully linked player tag - ${playerTag} to your account!` });
     } catch (error: unknown) {
-        if (error instanceof Prisma.PrismaClientKnownRequestError) {
-            if (error.code === 'P2002') {
-                await interaction.editReply({ content: `Player tag - ${playerTag} is already linked to your account` });
-            }
+        if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2002') {
+            await interaction.editReply({ content: `Player tag - ${playerTag} is already linked to your account` });
         }
     }
 }

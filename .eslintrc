@@ -1,12 +1,21 @@
 {
-    "extends": ["xo", "xo-typescript", "plugin:prettier/recommended"],
-    "plugins": ["prettier"],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "project": "./tsconfig.json"
-    },
-    "rules": {
-        "curly": [2, "all"],
-        "no-await-in-loop": "off"
-    }
+	"extends": ["@sapphire"],
+	"plugins": ["prettier", "import"],
+	"rules": {
+		"import/order": [
+			"error",
+			{
+				"groups": ["builtin", "external", "internal", "index", "sibling", "parent"],
+				"alphabetize": {
+					"order": "asc",
+					"caseInsensitive": true
+				},
+				"newlines-between": "always"
+			}
+		],
+		"new-cap": "off",
+		"import/first": "error",
+		"import/no-duplicates": "error",
+		"import/newline-after-import": "error"
+	}
 }

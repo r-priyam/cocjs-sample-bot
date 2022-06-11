@@ -1,5 +1,6 @@
 import type { Clan } from 'clashofclans.js';
 import type { Client } from 'discord.js';
+
 import { config } from '../utils/EnvValidator';
 
 export const name = 'onMemberLeave';
@@ -25,10 +26,8 @@ export async function execute(client: Client, oldClan: Clan, newClan: Clan) {
     }
 
     oldClan.members.forEach(async (member) => {
-        if (!newClan.members.find((newmember) => newmember.tag === member.tag)) {
-            if (channel.isText()) {
-                await channel.send(`${member.name} left ${newClan.name}`);
-            }
+        if (!newClan.members.find((newmember) => newmember.tag === member.tag) && channel.isText()) {
+            await channel.send(`${member.name} left ${newClan.name}`);
         }
     });
 }

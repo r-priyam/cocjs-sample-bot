@@ -1,5 +1,6 @@
 import type { Clan } from 'clashofclans.js';
 import type { Client } from 'discord.js';
+
 import { config } from '../utils/EnvValidator';
 
 export const name = 'onMemberJoin';
@@ -25,10 +26,8 @@ export async function execute(client: Client, oldClan: Clan, newClan: Clan) {
     }
 
     newClan.members.forEach(async (member) => {
-        if (!oldClan.members.find((oldMember) => oldMember.tag === member.tag)) {
-            if (channel.isText()) {
-                await channel.send(`${member.name} joined ${newClan.name}`);
-            }
+        if (!oldClan.members.some((oldMember) => oldMember.tag === member.tag) && channel.isText()) {
+            await channel.send(`${member.name} joined ${newClan.name}`);
         }
     });
 }

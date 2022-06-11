@@ -1,6 +1,7 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
 import { HTTPError, Util } from 'clashofclans.js';
 import type { CommandInteraction } from 'discord.js';
+
 import { linkClanTag } from '../database/clanData';
 import { linkPlayerTag } from '../database/playerData';
 
@@ -30,22 +31,18 @@ export async function execute(interaction: CommandInteraction) {
             const player = await interaction.client.coc.getPlayer(tag!);
             await linkPlayerTag(interaction, player.tag);
         } catch (error: unknown) {
-            if (error instanceof HTTPError && error.message === 'notFound') {
-                await interaction.editReply({ content: `$Failed to find player with ${tag!}!` });
-            } else {
-                await interaction.editReply({ content: 'Something went wrong, try again!' });
-            }
+            await (error instanceof HTTPError && error.message === 'notFound'
+                ? interaction.editReply({ content: `$Failed to find player with ${tag!}!` })
+                : interaction.editReply({ content: 'Something went wrong, try again!' }));
         }
     } else if (type === 'link_clan') {
         try {
             const clan = await interaction.client.coc.getClan(tag!);
             await linkClanTag(interaction, clan.tag);
         } catch (error: unknown) {
-            if (error instanceof HTTPError && error.message === 'notFound') {
-                await interaction.editReply({ content: `$Failed to find clan with ${tag!}!` });
-            } else {
-                await interaction.editReply({ content: 'Something went wrong, try again!' });
-            }
+            await (error instanceof HTTPError && error.message === 'notFound'
+                ? interaction.editReply({ content: `$Failed to find clan with ${tag!}!` })
+                : interaction.editReply({ content: 'Something went wrong, try again!' }));
         }
     }
 }

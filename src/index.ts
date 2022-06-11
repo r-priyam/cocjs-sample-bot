@@ -1,8 +1,10 @@
+import fs from 'node:fs';
+import path from 'node:path';
+
 import { PrismaClient } from '@prisma/client';
 import { Client as ClashClient } from 'clashofclans.js';
 import { Client, Collection, Intents } from 'discord.js';
-import fs from 'node:fs';
-import path from 'path';
+
 import { config } from './utils/EnvValidator';
 import { ClashEventFile, CommandFile, DiscordEventFile } from './utils/interfaces';
 import Logger from './utils/Logger';
@@ -35,7 +37,7 @@ async function main() {
     for (const file of events) {
         const event = (await import(path.join(__dirname, `events/${file}`))) as DiscordEventFile;
         // Register discord events callbacks
-        client.on(event.name, async (...args) => {
+        client.on(event.name, (...args) => {
             event.execute(client, ...args);
         });
     }
@@ -49,7 +51,7 @@ async function main() {
         });
         // Register callback to execute when event is triggered
         client.coc.on(event.name, async (...args) => {
-            event.execute(client, ...args);
+            await event.execute(client, ...args);
         });
     }
 

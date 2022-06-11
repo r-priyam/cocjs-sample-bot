@@ -1,8 +1,10 @@
+import fs from 'node:fs';
+import path from 'node:path';
+
 import { REST } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v9';
 import env from 'dotenv';
-import fs from 'node:fs';
-import path from 'path';
+
 import { config } from './utils/EnvValidator';
 import { CommandFile } from './utils/interfaces';
 import Logger from './utils/Logger';

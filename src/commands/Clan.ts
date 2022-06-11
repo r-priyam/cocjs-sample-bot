@@ -2,6 +2,7 @@ import { SlashCommandBuilder } from '@discordjs/builders';
 import { HTTPError, Util } from 'clashofclans.js';
 import type { CommandInteraction } from 'discord.js';
 import { MessageEmbed } from 'discord.js';
+
 import { getLinkedClanTag } from '../database/clanData';
 
 export const slashCommand = new SlashCommandBuilder()
@@ -44,15 +45,13 @@ export async function execute(interaction: CommandInteraction) {
                 { name: 'Clan War League', value: `${clan.warLeague?.name ?? 'No league'}`, inline: false },
                 { name: 'Chat Language', value: `${clan.chatLanguage?.name ?? 'Not set'}`, inline: false }
             )
-            .setColor([0xe74c3c, 0x2980b9, 0x1abc9c, 0xe67e22, 0xf1c40f][Math.floor(Math.random() * 6)])
-            .setURL(`https://link.clashofclans.com/en?action=OpenClanProfile&tag=${clan.tag.replace(/#/g, '')}`)
+            .setColor([0xe7_4c_3c, 0x29_80_b9, 0x1a_bc_9c, 0xe6_7e_22, 0xf1_c4_0f][Math.floor(Math.random() * 6)])
+            .setURL(`https://link.clashofclans.com/en?action=OpenClanProfile&tag=${clan.tag.replaceAll('#', '')}`)
             .setTimestamp();
         await interaction.editReply({ embeds: [embed] });
     } catch (error: unknown) {
-        if (error instanceof HTTPError && error.message === 'notFound') {
-            await interaction.editReply({ content: `$Failed to find clan with ${clanTag}!` });
-        } else {
-            await interaction.editReply({ content: 'Something went wrong, try again!' });
-        }
+        await (error instanceof HTTPError && error.message === 'notFound'
+            ? interaction.editReply({ content: `$Failed to find clan with ${clanTag}!` })
+            : interaction.editReply({ content: 'Something went wrong, try again!' }));
     }
 }
