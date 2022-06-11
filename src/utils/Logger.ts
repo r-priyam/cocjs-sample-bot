@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import pc from 'picocolors';
 import util from 'util';
 
-const coleredTag = (type: string) => {
+const coloredTag = (type: string) => {
     switch (type) {
         case 'debug':
             return pc.magenta(pc.bold('[DEBUG]'));
@@ -18,14 +18,14 @@ const coleredTag = (type: string) => {
 };
 
 export default class Logger {
-    private static write(message: string | any, { error, label, tag }: { error?: boolean; label?: string; tag: string }) {
+    private static write(message: string, { error, label, tag }: { error?: boolean; label?: string; tag: string }) {
         const timestamp = pc.blue(pc.bold(dayjs().format('DD-MM-YYYY hh:mm:ss')));
         const content = this.clean(message);
         const stream = error ? process.stderr : process.stdout;
-        stream.write(`[${timestamp}] ${coleredTag(tag)} » ${label ? `${pc.cyan(`[${label}]`)} » ` : ''}${pc.white(content)}\n`);
+        stream.write(`[${timestamp}] ${coloredTag(tag)} » ${label ? `${pc.cyan(`[${label}]`)} » ` : ''}${pc.white(content)}\n`);
     }
 
-    private static clean(message: string | any) {
+    private static clean(message: string) {
         if (typeof message === 'string') {
             return message;
         }
@@ -33,19 +33,19 @@ export default class Logger {
         return util.inspect(message, { depth: Infinity });
     }
 
-    public debug(message: string | any, { label }: { label?: string }) {
+    public debug(message: string, { label }: { label?: string }) {
         (this.constructor as typeof Logger).write(message, { label, tag: 'debug' });
     }
 
-    public info(message: string | any, { label }: { label?: string }) {
+    public info(message: string, { label }: { label?: string }) {
         (this.constructor as typeof Logger).write(message, { label, tag: 'info' });
     }
 
-    public error(message: string | any, { label }: { label?: string }) {
+    public error(message: string, { label }: { label?: string }) {
         (this.constructor as typeof Logger).write(message, { error: true, label, tag: 'error' });
     }
 
-    public warn(message: string | any, { label }: { label?: string }) {
+    public warn(message: string, { label }: { label?: string }) {
         (this.constructor as typeof Logger).write(message, { label, tag: 'warn' });
     }
 }
