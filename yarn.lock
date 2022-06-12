@@ -425,9 +425,9 @@ __metadata:
   linkType: hard
 
 "@sapphire/shapeshift@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "@sapphire/shapeshift@npm:3.1.0"
-  checksum: d28035fe9dd2b59feda24daad4ae5f3ae16bf98312e726df85c79cf071de3447a2a0e81f818471a7abb8d6678423e7e6ece57687d162269624e503e62cae26a4
+  version: 3.2.0
+  resolution: "@sapphire/shapeshift@npm:3.2.0"
+  checksum: 166c590e66e222f20bc92e21b50390b687eca5c948a4bbf6a4cf8745189fa35972f41b1022a3a35c4e0f2e2c808232f18f46ddb1db12b84c10bd1c9145740ff0
   languageName: node
   linkType: hard
 
@@ -469,30 +469,30 @@ __metadata:
   linkType: hard
 
 "@tsconfig/node10@npm:^1.0.7":
-  version: 1.0.8
-  resolution: "@tsconfig/node10@npm:1.0.8"
-  checksum: b8d5fffbc6b17ef64ef74f7fdbccee02a809a063ade785c3648dae59406bc207f70ea2c4296f92749b33019fa36a5ae716e42e49cc7f1bbf0fd147be0d6b970a
+  version: 1.0.9
+  resolution: "@tsconfig/node10@npm:1.0.9"
+  checksum: a33ae4dc2a621c0678ac8ac4bceb8e512ae75dac65417a2ad9b022d9b5411e863c4c198b6ba9ef659e14b9fb609bbec680841a2e84c1172df7a5ffcf076539df
   languageName: node
   linkType: hard
 
 "@tsconfig/node12@npm:^1.0.7":
-  version: 1.0.9
-  resolution: "@tsconfig/node12@npm:1.0.9"
-  checksum: a01b2400ab3582b86b589c6d31dcd0c0656f333adecde85d6d7d4086adb059808b82692380bb169546d189bf771ae21d02544a75b57bd6da4a5dd95f8567bec9
+  version: 1.0.10
+  resolution: "@tsconfig/node12@npm:1.0.10"
+  checksum: 3683668703d5a2b43fe9b3135c5e475c401b5aaf7a586df8bb7eead1184b901d6606b6aee093dbb82e2d23b58f26104da433c86601a2912f512c1c935e4144a0
   languageName: node
   linkType: hard
 
 "@tsconfig/node14@npm:^1.0.0":
-  version: 1.0.1
-  resolution: "@tsconfig/node14@npm:1.0.1"
-  checksum: 976345e896c0f059867f94f8d0f6ddb8b1844fb62bf36b727de8a9a68f024857e5db97ed51d3325e23e0616a5e48c034ff51a8d595b3fe7e955f3587540489be
+  version: 1.0.2
+  resolution: "@tsconfig/node14@npm:1.0.2"
+  checksum: 6260dd461728c200921b4848cd9e1df2bfb2c1ee6c1b6dadbc9bf81afadff8ddf11c6312e08c07de89f6c40163916ff8307f6008bf6c76a4d72a2833dae7bf7c
   languageName: node
   linkType: hard
 
 "@tsconfig/node16@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "@tsconfig/node16@npm:1.0.2"
-  checksum: ca94d3639714672bbfd55f03521d3f56bb6a25479bd425da81faf21f13e1e9d15f40f97377dedbbf477a5841c5b0c8f4cd1b391f33553d750b9202c54c2c07aa
+  version: 1.0.3
+  resolution: "@tsconfig/node16@npm:1.0.3"
+  checksum: 3a8b657dd047495b7ad23437d6afd20297ce90380ff0bdee93fc7d39a900dbd8d9e26e53ff6b465e7967ce2adf0b218782590ce9013285121e6a5928fbd6819f
   languageName: node
   linkType: hard
 
@@ -528,9 +528,9 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*, @types/node@npm:>=12, @types/node@npm:^17.0.21":
-  version: 17.0.35
-  resolution: "@types/node@npm:17.0.35"
-  checksum: 7a24946ae7fd20267ed92466384f594e448bfb151081158d565cc635d406ecb29ea8fb85fcd2a1f71efccf26fb5bd3c6f509bde56077eb8b832b847a6664bc62
+  version: 17.0.42
+  resolution: "@types/node@npm:17.0.42"
+  checksum: a200cd87e4f12d4d5682a893ad6e1140720c6c074a2cd075f254b3b8306d6174f5a3630e5d2347efb5e9b80d420404b5fafc8fe3c7d4c81998cd914c50b19f75
   languageName: node
   linkType: hard
 
@@ -549,9 +549,9 @@ __metadata:
   linkType: hard
 
 "@types/prettier@npm:^2":
-  version: 2.6.1
-  resolution: "@types/prettier@npm:2.6.1"
-  checksum: b25ec46d18129fa40c1a1f42feb7406e8f19901ba5261ba3c71600ad14996ae07b4f4b727a9b83da673948011e59d870fc519166f05b5d49e9ad39db1aea8c93
+  version: 2.6.3
+  resolution: "@types/prettier@npm:2.6.3"
+  checksum: e1836699ca189fff6d2a73dc22e028b6a6f693ed1180d5998ac29fa197caf8f85aa92cb38db642e4a370e616b451cb5722ad2395dab11c78e025a1455f37d1f0
   languageName: node
   linkType: hard
 
@@ -1297,16 +1297,16 @@ __metadata:
   linkType: hard
 
 "cosmiconfig-typescript-loader@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "cosmiconfig-typescript-loader@npm:2.0.0"
+  version: 2.0.1
+  resolution: "cosmiconfig-typescript-loader@npm:2.0.1"
   dependencies:
     cosmiconfig: ^7
-    ts-node: ^10.7.0
+    ts-node: ^10.8.0
   peerDependencies:
     "@types/node": "*"
     cosmiconfig: ">=7"
     typescript: ">=3"
-  checksum: a32db823436b722734957f413036126740ccfee32c466fc21067d7dd1f7160ea1a2e76bd675e8e6b7e8f9fb6f516b35103aae1ff4ec41525476ca1a0f4d75585
+  checksum: 8412f91c0c00150ffab8a4a1bf797cc5dc417b8b99c48d445daa11608722d87456aec5052b52c38d990868cdbb763708a272fd377f6f5c51e70d414bd69fafee
   languageName: node
   linkType: hard
 
@@ -3940,45 +3940,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-node@npm:^10.7.0":
-  version: 10.8.0
-  resolution: "ts-node@npm:10.8.0"
-  dependencies:
-    "@cspotcode/source-map-support": ^0.8.0
-    "@tsconfig/node10": ^1.0.7
-    "@tsconfig/node12": ^1.0.7
-    "@tsconfig/node14": ^1.0.0
-    "@tsconfig/node16": ^1.0.2
-    acorn: ^8.4.1
-    acorn-walk: ^8.1.1
-    arg: ^4.1.0
-    create-require: ^1.1.0
-    diff: ^4.0.1
-    make-error: ^1.1.1
-    v8-compile-cache-lib: ^3.0.1
-    yn: 3.1.1
-  peerDependencies:
-    "@swc/core": ">=1.2.50"
-    "@swc/wasm": ">=1.2.50"
-    "@types/node": "*"
-    typescript: ">=2.7"
-  peerDependenciesMeta:
-    "@swc/core":
-      optional: true
-    "@swc/wasm":
-      optional: true
-  bin:
-    ts-node: dist/bin.js
-    ts-node-cwd: dist/bin-cwd.js
-    ts-node-esm: dist/bin-esm.js
-    ts-node-script: dist/bin-script.js
-    ts-node-transpile-only: dist/bin-transpile.js
-    ts-script: dist/bin-script-deprecated.js
-  checksum: 1c22dc8dd80d0ba4dd4250b82cc032b63f6fbe8c87f8197cef43e7f9e2d43f5b333b445ed712e3006e24119257b4bff2c46605f7da61ab6f5e9514885d296f0c
-  languageName: node
-  linkType: hard
-
-"ts-node@npm:^10.8.1":
+"ts-node@npm:^10.8.0, ts-node@npm:^10.8.1":
   version: 10.8.1
   resolution: "ts-node@npm:10.8.1"
   dependencies:
@@ -4118,11 +4080,11 @@ __metadata:
   linkType: hard
 
 "uglify-js@npm:^3.1.4":
-  version: 3.15.5
-  resolution: "uglify-js@npm:3.15.5"
+  version: 3.16.0
+  resolution: "uglify-js@npm:3.16.0"
   bin:
     uglifyjs: bin/uglifyjs
-  checksum: f29e0a6ce889ce6711fd1938a92e0c243c6028347bea618c5267312752f96b6a92c773b39f68b7e337a77042bf18e6eeac550d84a1f611911a210d15ca190e1c
+  checksum: be0207e57ef70b13e92196cd0351f28908b80121d809901b511593c0bd1043d9c0b21d22f2a83001da873407a02572b67ccd21ce5e053cf7c787b2ca8a3773fb
   languageName: node
   linkType: hard
 
