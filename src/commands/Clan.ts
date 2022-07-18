@@ -1,7 +1,7 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
 import { HTTPError, Util } from 'clashofclans.js';
-import type { CommandInteraction } from 'discord.js';
-import { MessageEmbed } from 'discord.js';
+import type { ChatInputCommandInteraction } from 'discord.js';
+import { EmbedBuilder } from 'discord.js';
 
 import { getLinkedClanTag } from '../database/clanData';
 
@@ -10,7 +10,7 @@ export const slashCommand = new SlashCommandBuilder()
     .setDescription('Get the info of a clan')
     .addStringOption((option) => option.setName('tag').setDescription('The clan tag'));
 
-export async function execute(interaction: CommandInteraction) {
+export async function execute(interaction: ChatInputCommandInteraction) {
     let clanTag = interaction.options.getString('tag');
 
     if (!clanTag) {
@@ -31,7 +31,7 @@ export async function execute(interaction: CommandInteraction) {
     try {
         await interaction.deferReply();
         const clan = await interaction.client.coc.getClan(clanTag);
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setTitle(`${clan.name}`)
             .setThumbnail(clan.badge.url)
             // https://clashofclans.js.org/docs/api/classes/Clan

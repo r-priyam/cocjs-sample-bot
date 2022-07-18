@@ -1,6 +1,6 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
 import { HTTPError, Util } from 'clashofclans.js';
-import type { CommandInteraction } from 'discord.js';
+import type { ChatInputCommandInteraction } from 'discord.js';
 
 import { linkClanTag } from '../database/clanData';
 import { linkPlayerTag } from '../database/playerData';
@@ -17,7 +17,7 @@ export const slashCommand = new SlashCommandBuilder()
     )
     .addStringOption((option) => option.setName('tag').setDescription('The tag to link').setRequired(true));
 
-export async function execute(interaction: CommandInteraction) {
+export async function execute(interaction: ChatInputCommandInteraction) {
     const type = interaction.options.getString('type');
     const tag = interaction.options.getString('tag');
 

@@ -1,7 +1,7 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
 import { HTTPError, Util } from 'clashofclans.js';
-import type { CommandInteraction } from 'discord.js';
-import { MessageEmbed } from 'discord.js';
+import type { ChatInputCommandInteraction } from 'discord.js';
+import { EmbedBuilder } from 'discord.js';
 
 import { getLinkedPlayerTags } from '../database/playerData';
 
@@ -10,7 +10,7 @@ export const slashCommand = new SlashCommandBuilder()
     .setDescription('Get the info of a player')
     .addStringOption((option) => option.setName('tag').setDescription('The player tag'));
 
-export async function execute(interaction: CommandInteraction) {
+export async function execute(interaction: ChatInputCommandInteraction) {
     let playerTag = interaction.options.getString('tag');
 
     if (!playerTag) {
@@ -31,7 +31,7 @@ export async function execute(interaction: CommandInteraction) {
     try {
         await interaction.deferReply();
         const player = await interaction.client.coc.getPlayer(playerTag);
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setTitle(`${player.name}`)
             .setThumbnail(player.league.icon.url)
             // https://clashofclans.js.org/docs/api/interfaces/APIPlayer
@@ -42,7 +42,7 @@ export async function execute(interaction: CommandInteraction) {
                 { name: 'Trophies', value: `${player.trophies}`, inline: false },
                 { name: 'Donations', value: `${player.donations}`, inline: false },
                 { name: 'Donations Received', value: `${player.received}`, inline: false },
-                { name: 'Attcks/Defense', value: `${player.attackWins}/${player.defenseWins}`, inline: false }
+                { name: 'Attacks/Defense', value: `${player.attackWins}/${player.defenseWins}`, inline: false }
             )
             .setColor([0xe7_4c_3c, 0x29_80_b9, 0x1a_bc_9c, 0xe6_7e_22, 0xf1_c4_0f][Math.floor(Math.random() * 6)])
             .setURL(`https://link.clashofclans.com/en?action=OpenPlayerProfile&tag=${player.tag.replaceAll('#', '')}`)

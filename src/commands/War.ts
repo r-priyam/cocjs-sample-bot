@@ -1,7 +1,7 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
 import { HTTPError, Util } from 'clashofclans.js';
-import type { CommandInteraction } from 'discord.js';
-import { MessageEmbed } from 'discord.js';
+import type { ChatInputCommandInteraction } from 'discord.js';
+import { EmbedBuilder } from 'discord.js';
 
 import { getLinkedClanTag } from '../database/clanData';
 
@@ -16,7 +16,7 @@ export const slashCommand = new SlashCommandBuilder()
     .setDescription('Get the info of a clan war')
     .addStringOption((option) => option.setName('tag').setDescription('The clan tag'));
 
-export async function execute(interaction: CommandInteraction) {
+export async function execute(interaction: ChatInputCommandInteraction) {
     let clanTag = interaction.options.getString('tag');
 
     if (!clanTag) {
@@ -41,7 +41,7 @@ export async function execute(interaction: CommandInteraction) {
             return await interaction.editReply({ content: `${clanTag} isn't in a war!` });
         }
 
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setTitle(`${war.clan.name}`)
             .setThumbnail(war.clan.badge.url)
             // I don't know what else to add in fields. You can find all the properties

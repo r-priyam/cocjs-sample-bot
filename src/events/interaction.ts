@@ -1,17 +1,16 @@
-import type { Client, Interaction } from 'discord.js';
+import { Client, Interaction, InteractionType } from 'discord.js';
 
 export const name = 'interactionCreate';
 
 export async function execute(client: Client, interaction: Interaction) {
-    if (!interaction.isCommand()) {
+    if (interaction.type !== InteractionType.ApplicationCommand) {
         return;
     }
 
     const command = client.commands.get(interaction.commandName);
 
     if (!command) {
-        await interaction.reply({ content: 'Command not found!', ephemeral: true });
-        return;
+        return interaction.reply({ content: 'Command not found!', ephemeral: true });
     }
 
     try {

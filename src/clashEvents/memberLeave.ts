@@ -1,5 +1,5 @@
 import type { Clan } from 'clashofclans.js';
-import type { Client } from 'discord.js';
+import { ChannelType, Client } from 'discord.js';
 
 import { config } from '../utils/EnvValidator';
 
@@ -26,7 +26,7 @@ export async function execute(client: Client, oldClan: Clan, newClan: Clan) {
     }
 
     oldClan.members.forEach(async (member) => {
-        if (!newClan.members.find((newmember) => newmember.tag === member.tag) && channel.isText()) {
+        if (!newClan.members.find((newMember) => newMember.tag === member.tag) && channel.type === ChannelType.GuildText) {
             await channel.send(`${member.name} left ${newClan.name}`);
         }
     });

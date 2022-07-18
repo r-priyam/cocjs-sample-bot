@@ -3,7 +3,7 @@ import joi from 'joi';
 
 env.config();
 
-interface EnviromentVariables {
+interface EnvironmentVariables {
     clashEmail: string;
     clashPassword: string;
     projectName: string;
@@ -34,4 +34,4 @@ if (validate.error) {
     throw new Error(`Config validation error: ${validate.error.message}`);
 }
 
-export const config = validate.value as EnviromentVariables;
+export const config = validate.value as EnvironmentVariables;

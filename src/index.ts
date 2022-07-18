@@ -3,14 +3,14 @@ import path from 'node:path';
 
 import { PrismaClient } from '@prisma/client';
 import { Client as ClashClient } from 'clashofclans.js';
-import { Client, Collection, Intents } from 'discord.js';
+import { Client, Collection, GatewayIntentBits } from 'discord.js';
 
 import { config } from './utils/EnvValidator';
 import { ClashEventFile, CommandFile, DiscordEventFile } from './utils/interfaces';
 import Logger from './utils/Logger';
 
 async function main() {
-    const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+    const client = new Client({ intents: [GatewayIntentBits.Guilds] });
     const commandFiles = fs.readdirSync(path.join(__dirname, 'commands')).filter((file) => file.endsWith('.js'));
     const clashEvents = fs.readdirSync(path.join(__dirname, 'clashEvents')).filter((file) => file.endsWith('.js'));
     const events = fs.readdirSync(path.join(__dirname, 'events')).filter((file) => file.endsWith('.js'));
