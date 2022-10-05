@@ -1,9 +1,9 @@
-import { SlashCommandBuilder } from '@discordjs/builders';
 import { HTTPError, Util } from 'clashofclans.js';
-import type { ChatInputCommandInteraction } from 'discord.js';
-import { EmbedBuilder } from 'discord.js';
+import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 
 import { getLinkedClanTag } from '../database/clanData';
+
+import type { ChatInputCommandInteraction } from 'discord.js';
 
 const warStates: Record<string, string> = {
     preparation: 'Preparation day',

@@ -1,15 +1,15 @@
 export interface CommandFile {
-    slashCommand: { name: string; toJSON: () => any };
-    execute: () => void;
+    execute(): void;
+    slashCommand: { name: string; toJSON(): any };
 }
 
 export interface DiscordEventFile {
+    execute(...args: unknown[]): void;
     name: string;
-    execute: (...args: unknown[]) => void;
 }
 
 export interface ClashEventFile {
+    execute(...args: unknown[]): Promise<void>;
+    filter(...args: unknown[]): boolean;
     name: string;
-    filter: (...args: unknown[]) => boolean;
-    execute: (...args: unknown[]) => Promise<void>;
 }

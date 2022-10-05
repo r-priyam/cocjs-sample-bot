@@ -1,3 +1,4 @@
+/* eslint-disable n/no-sync */
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -6,8 +7,9 @@ import { Client as ClashClient } from 'clashofclans.js';
 import { Client, Collection, GatewayIntentBits } from 'discord.js';
 
 import { config } from './utils/EnvValidator';
-import { ClashEventFile, CommandFile, DiscordEventFile } from './utils/interfaces';
 import Logger from './utils/Logger';
+
+import type { ClashEventFile, CommandFile, DiscordEventFile } from './utils/interfaces';
 
 async function main() {
     const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -24,6 +26,7 @@ async function main() {
     for (const file of commandFiles) {
         const command = (await import(path.join(__dirname, `commands/${file}`))) as CommandFile;
         // We only need the execute function of the command to run it
+        // eslint-disable-next-line @typescript-eslint/unbound-method
         client.commands.set(command.slashCommand.name, { execute: command.execute });
     }
 

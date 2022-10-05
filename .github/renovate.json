@@ -1,3 +1,12 @@
 {
-    "extends": ["github>r-priyam/configs"]
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": ["github>sapphiredev/readme:sapphire-renovate"],
+    "npm": {
+        "packageRules": [
+            {
+                "matchPackagePatterns": ["discord-api-types", "@discordjs/builders"],
+                "enabled": false
+            }
+        ]
+    }
 }

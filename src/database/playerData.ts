@@ -1,4 +1,5 @@
 import { Prisma } from '@prisma/client';
+
 import type { CommandInteraction } from 'discord.js';
 
 export async function getLinkedPlayerTags(interaction: CommandInteraction) {

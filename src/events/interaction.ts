@@ -1,4 +1,6 @@
-import { Client, Interaction, InteractionType } from 'discord.js';
+import { InteractionType } from 'discord.js';
+
+import type { Client, Interaction } from 'discord.js';
 
 export const name = 'interactionCreate';
 

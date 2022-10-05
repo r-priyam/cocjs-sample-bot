@@ -1,21 +1,11 @@
 {
-	"extends": ["@sapphire"],
-	"plugins": ["prettier", "import"],
-	"rules": {
-		"import/order": [
-			"error",
-			{
-				"groups": ["builtin", "external", "internal", "index", "sibling", "parent"],
-				"alphabetize": {
-					"order": "asc",
-					"caseInsensitive": true
-				},
-				"newlines-between": "always"
-			}
-		],
-		"new-cap": "off",
-		"import/first": "error",
-		"import/no-duplicates": "error",
-		"import/newline-after-import": "error"
-	}
+    "root": true,
+    "parserOptions": {
+        "project": "./tsconfig.eslint.json"
+    },
+    "ignorePatterns": ["./dist/*"],
+    "extends": ["snail/common", "snail/node", "snail/typescript", "snail/prettier"],
+    "env": {
+        "jest": true
+    }
 }

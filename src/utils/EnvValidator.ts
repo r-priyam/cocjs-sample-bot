@@ -1,17 +1,19 @@
+import process from 'node:process';
+
 import env from 'dotenv';
 import joi from 'joi';
 
 env.config();
 
 interface EnvironmentVariables {
-    clashEmail: string;
-    clashPassword: string;
-    projectName: string;
     botClientId: string;
-    testGuildId: string;
     botToken: string;
     clanTags: string;
+    clashEmail: string;
+    clashPassword: string;
     memberReportingChannelId: string;
+    projectName: string;
+    testGuildId: string;
 }
 
 const envVarsSchema = joi

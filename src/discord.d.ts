@@ -1,14 +1,13 @@
+import type Logger from './utils/Logger';
 import type { PrismaClient } from '@prisma/client';
 import type { Client as ClashClient } from 'clashofclans.js';
 import type { Collection } from 'discord.js';
 
-import type Logger from './utils/Logger';
-
 declare module 'discord.js' {
     export interface Client {
-        commands: Collection<string, { execute: (...args: unknown[]) => AsyncFunction }>;
         coc: ClashClient;
-        logger: Logger;
+        commands: Collection<string, { execute(...args: unknown[]): AsyncFunction }>;
         db: PrismaClient;
+        logger: Logger;
     }
 }

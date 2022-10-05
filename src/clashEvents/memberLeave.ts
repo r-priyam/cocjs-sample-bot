@@ -1,7 +1,9 @@
-import type { Clan } from 'clashofclans.js';
-import { ChannelType, Client } from 'discord.js';
+import { ChannelType } from 'discord.js';
 
 import { config } from '../utils/EnvValidator';
+
+import type { Clan } from 'clashofclans.js';
+import type { Client } from 'discord.js';
 
 export const name = 'onMemberLeave';
 
@@ -12,11 +14,7 @@ export function filter(oldClan: Clan, newClan: Clan) {
     }
 
     const leftMembers = oldClan.members.filter((member) => !newTags.includes(member.tag));
-    if (leftMembers.length === 0) {
-        return false;
-    }
-
-    return true;
+    return leftMembers.length !== 0;
 }
 
 export async function execute(client: Client, oldClan: Clan, newClan: Clan) {
@@ -25,9 +23,9 @@ export async function execute(client: Client, oldClan: Clan, newClan: Clan) {
         return;
     }
 
-    oldClan.members.forEach(async (member) => {
-        if (!newClan.members.find((newMember) => newMember.tag === member.tag) && channel.type === ChannelType.GuildText) {
+    for (const member of oldClan.members) {
+        if (!newClan.members.some((newMember) => newMember.tag === member.tag) && channel.type === ChannelType.GuildText) {
             await channel.send(`${member.name} left ${newClan.name}`);
         }
-    });
+    }
 }
