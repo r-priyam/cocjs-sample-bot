@@ -18,6 +18,7 @@
 
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/r-priyam/cocjs-smaple-bot.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/r-priyam/cocjs-smaple-bot/alerts/)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/r-priyam/cocjs-smaple-bot.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/r-priyam/cocjs-smaple-bot/context:javascript)
+
 </div>
 
 ## Introduction
@@ -26,10 +27,10 @@ This sample bot project aims to help you get started with interacting [Clash of 
 
 ## Features
 
-- 📝 Databse integration (PostgreSQL)
-- ✍️ Fully typechecked code
-- 🚀 3 commands and 2 events
-- 😎 It just works
+-   📝 Databse integration (PostgreSQL)
+-   ✍️ Fully typechecked code
+-   🚀 3 commands and 2 events
+-   😎 It just works
 
 More thing around, figure out on yourself 🤷‍♂️
 
@@ -37,23 +38,23 @@ More thing around, figure out on yourself 🤷‍♂️
 
 Before you dive into running this project, I expect you to have these things ready:
 
-- [NodeJs](https://nodejs.org/) (version>=16)
-- [Postgresql](https://www.postgresql.org/) installed locally and ruuning
-- [git](https://git-scm.com/) (This is required to clone the project on your local machine)
-- Account on [Clash of Clans API](https://developer.clashofclans.com/)
-- Bot account on [Discord](https://discord.com/developers/)
+-   [NodeJs](https://nodejs.org/) (version>=16)
+-   [Postgresql](https://www.postgresql.org/) installed locally and ruuning
+-   [git](https://git-scm.com/) (This is required to clone the project on your local machine)
+-   Account on [Clash of Clans API](https://developer.clashofclans.com/)
+-   Bot account on [Discord](https://discord.com/developers/)
 
 After completing the above steps, do invite the bot to your server.
 
 ## Important Links
 
-- [clashofclans.js Documentation](https://clashofclans.js.org/docs/)
-- [Clash of Clans Developer Website](https://developer.clashofclans.com/)
-- [Clash of Clans API Community Discord](https://discord.gg/Eaja7gJ)
-- [Discord Developer Website](https://discord.com/developers/)
-- [discord.js Documentation](https://discord.js.org/)
-- [discord.js Guide](https://discordjs.guide/)
-- [Prisma ORM docs](https://www.prisma.io/docs/)
+-   [clashofclans.js Documentation](https://clashofclans.js.org/docs/)
+-   [Clash of Clans Developer Website](https://developer.clashofclans.com/)
+-   [Clash of Clans API Community Discord](https://discord.gg/Eaja7gJ)
+-   [Discord Developer Website](https://discord.com/developers/)
+-   [discord.js Documentation](https://discord.js.org/)
+-   [discord.js Guide](https://discordjs.guide/)
+-   [Prisma ORM docs](https://www.prisma.io/docs/)
 
 ## Getting Started
 
@@ -76,10 +77,10 @@ Once the bot is running and slash commands are reflecting in the test server the
 
 ## Commands
 
-- `/player` - To get player information
-- `/clan` - To get clan information
-- `/war` - To get clan war information
-- `/link` - To link a clan or a player to your discord account.
+-   `/player` - To get player information
+-   `/clan` - To get clan information
+-   `/war` - To get clan war information
+-   `/link` - To link a clan or a player to your discord account.
 
 Tag is an optional parameter in `/player`, `/clan` and `/war` commands. If you don't provide it then it will attempt to get the respective tag information from the database for the user who sent the command and will return the data for the first tag found in the database.
 
@@ -87,41 +88,44 @@ If you provide the tag then it will attempt to query the data directly from the 
 
 ## FAQ's
 
-- **Q:** Why it requires my Clash of Clans API account credentials?
-  - **A:** It is required to get the access token to interact with clash of clans api. If you don't want to give your account credentials, you can use the [Clash of Clans API](https://developer.clashofclans.com/) website directly to get the access token and then you can setup the `CLASH_TOKEN` environment variable. It will then require you do some extra steps to get the `clasofclans.js` to work.
-    To use API token diectly do these changes in the following files -
+-   **Q:** Why it requires my Clash of Clans API account credentials?
 
-    In `index.ts`
+    -   **A:** It is required to get the access token to interact with clash of clans api. If you don't want to give your account credentials, you can use the [Clash of Clans API](https://developer.clashofclans.com/) website directly to get the access token and then you can setup the `CLASH_TOKEN` environment variable. It will then require you do some extra steps to get the `clasofclans.js` to work.
+        To use API token diectly do these changes in the following files -
 
-    ```diff
-    - client.coc = new ClashClient({ cache: true });
-    + client.coc = new ClashClient({ keys: [config.CLASH_TOKEN], cache: true });
-    ```
+        In `index.ts`
 
-    In `utils/EnvValidator.ts`
+        ```diff
+        - client.coc = new ClashClient({ cache: true });
+        + client.coc = new ClashClient({ keys: [config.CLASH_TOKEN], cache: true });
+        ```
 
-    ```diff
-    interface EnviromentVariables {
-        // ...
-    +   CLASH_TOKEN: string;
-    }
+        In `utils/EnvValidator.ts`
 
-    const envVarsSchema = joi
-    .object()
-    .keys({
-        // ...
-    +   CLASH_TOKEN: joi.string().required(),
-    })
-    .unknown();
-    ```
+        ```diff
+        interface EnviromentVariables {
+            // ...
+        +   CLASH_TOKEN: string;
+        }
 
-- **Q:** Why adding commands to the test guild only and not globally?
-  - **A:** When adding commands globally then it takes at least 1 hour ~ to cache commands on discord side and then reflect in the servers in which bot is added into `but not much when we are adding commands specifically for guild only`. So, it is better to add commands to the test guild only when developing.
+        const envVarsSchema = joi
+        .object()
+        .keys({
+            // ...
+        +   CLASH_TOKEN: joi.string().required(),
+        })
+        .unknown();
+        ```
 
-- **Q:** How can I add commands globally?
-  - **A:** Please read discordjs guide [here](https://discordjs.guide/interactions/slash-commands.html#global-commands) and follow the steps to add commands globally.
+-   **Q:** Why adding commands to the test guild only and not globally?
 
-- **Q:** How can I add more commands?
-  - **A:** Please read discordjs guide [here](https://discordjs.guide/interactions/slash-commands.html#adding-commands) and follow the steps to add more commands.
+    -   **A:** When adding commands globally then it takes at least 1 hour ~ to cache commands on discord side and then reflect in the servers in which bot is added into `but not much when we are adding commands specifically for guild only`. So, it is better to add commands to the test guild only when developing.
+
+-   **Q:** How can I add commands globally?
+
+    -   **A:** Please read discordjs guide [here](https://discordjs.guide/interactions/slash-commands.html#global-commands) and follow the steps to add commands globally.
+
+-   **Q:** How can I add more commands?
+    -   **A:** Please read discordjs guide [here](https://discordjs.guide/interactions/slash-commands.html#adding-commands) and follow the steps to add more commands.
 
 If you have any questions or suggestions, please feel free to open an issue [here](https://github.com/r-priyam/cocjs-smaple-bot/issues/new).
