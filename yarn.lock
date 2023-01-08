@@ -656,9 +656,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prisma/client@npm:^4.8.0":
-  version: 4.8.0
-  resolution: "@prisma/client@npm:4.8.0"
+"@prisma/client@npm:^4.8.1":
+  version: 4.8.1
+  resolution: "@prisma/client@npm:4.8.1"
   dependencies:
     "@prisma/engines-version": 4.8.0-61.d6e67a83f971b175a593ccc12e15c4a757f93ffe
   peerDependencies:
@@ -666,7 +666,7 @@ __metadata:
   peerDependenciesMeta:
     prisma:
       optional: true
-  checksum: c0256721bd4e07fb1fdf4d0857489379769af1eaac0aec79387e32092e63e1246a95fef634f6c07bf1bdddc7c11f3e073c78e5c92b9a708f559773a3f656f94a
+  checksum: 93dc263e56f473478c8b7e051b7bad09893eac4fe0e2ba93af56e8394fb21e7e23a8fff0fde39f4aaaf85c3bfb0b51f3f50cc1cab3a585fdb94687f08e1c385a
   languageName: node
   linkType: hard
 
@@ -677,10 +677,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prisma/engines@npm:4.8.0":
-  version: 4.8.0
-  resolution: "@prisma/engines@npm:4.8.0"
-  checksum: 5c1198905d7bf850c02cd59f244055003fc2a03ce99e715a0a872f568fb024aa4b347804829c8630964ff41b64cf8fa3e08c8cd2a444ad29c215c4b1dd9701b0
+"@prisma/engines@npm:4.8.1":
+  version: 4.8.1
+  resolution: "@prisma/engines@npm:4.8.1"
+  checksum: 7ddddf5dcecbf2dd74e061fcf60c4ceef8a1c18e55aec3773ebcefb0edf0f8cf3b3e62eb7ad46fb82a85546ace5c626e1cc29b5d600ddf51989c8f07140600ca
   languageName: node
   linkType: hard
 
@@ -1633,7 +1633,7 @@ __metadata:
     "@commitlint/cli": ^17.4.0
     "@commitlint/config-conventional": ^17.4.0
     "@discordjs/rest": ^1.5.0
-    "@prisma/client": ^4.8.0
+    "@prisma/client": ^4.8.1
     "@types/node": ^18.11.18
     "@types/prettier": ^2
     "@typescript-eslint/eslint-plugin": ^5.48.0
@@ -1647,8 +1647,8 @@ __metadata:
     husky: ^8.0.3
     joi: ^17.7.0
     picocolors: ^1.0.0
-    prettier: ^2.8.1
-    prisma: ^4.8.0
+    prettier: ^2.8.2
+    prisma: ^4.8.1
     rimraf: ^3.0.2
     ts-node: ^10.9.1
     typescript: ^4.9.4
@@ -4082,24 +4082,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.8.1":
-  version: 2.8.1
-  resolution: "prettier@npm:2.8.1"
+"prettier@npm:^2.8.2":
+  version: 2.8.2
+  resolution: "prettier@npm:2.8.2"
   bin:
     prettier: bin-prettier.js
-  checksum: 4f21a0f1269f76fb36f54e9a8a1ea4c11e27478958bf860661fb4b6d7ac69aac1581f8724fa98ea3585e56d42a2ea317a17ff6e3324f40cb11ff9e20b73785cc
+  checksum: 740c56c2128d587d656ea1dde9bc9c3503dfc94db4f3ac387259215eeb2e216680bdad9d18a0c9feecc6b42cfa188d6fa777df4c36c1d00cedd4199074fbfbd2
   languageName: node
   linkType: hard
 
-"prisma@npm:^4.8.0":
-  version: 4.8.0
-  resolution: "prisma@npm:4.8.0"
+"prisma@npm:^4.8.1":
+  version: 4.8.1
+  resolution: "prisma@npm:4.8.1"
   dependencies:
-    "@prisma/engines": 4.8.0
+    "@prisma/engines": 4.8.1
   bin:
     prisma: build/index.js
     prisma2: build/index.js
-  checksum: 22ebaa32c51fb2938626d742d9ae68be5ad49a44dad2046bfe40439a64d06e8f84d4915f66100554d7840c3c5228c6b5c4216d9f5a698d5dd11a46ab528654cf
+  checksum: 6f09e9add231c1f38cc01051037c0abb5ff4db6773d5543ce8917beee76b15351474e97b0c06eaa25267f0a65e7596a8428292317c53d1868e9aaa09cd6e0705
   languageName: node
   linkType: hard
 
