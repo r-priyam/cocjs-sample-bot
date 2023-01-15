@@ -30,7 +30,7 @@
         "@types/prettier": "^2",
         "@typescript-eslint/eslint-plugin": "^5.48.1",
         "@typescript-eslint/parser": "^5.48.1",
-        "eslint": "^8.31.0",
+        "eslint": "^8.32.0",
         "eslint-config-snail": "^1.4.0",
         "husky": "^8.0.3",
         "joi": "^17.7.0",
