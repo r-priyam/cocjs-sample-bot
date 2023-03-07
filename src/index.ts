@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 import { PrismaClient } from '@prisma/client';
-import { Client as ClashClient } from 'clashofclans.js';
+import { PollingClient as ClashClient } from 'clashofclans.js';  // Client > PollingClient in 3.0
 import { Client, Collection, GatewayIntentBits } from 'discord.js';
 
 import { config } from './utils/EnvValidator';
@@ -21,7 +21,7 @@ async function main() {
     client.logger = new Logger();
     client.coc = new ClashClient({ cache: true });
     client.db = new PrismaClient();
-    client.coc.events.addClans(config.clanTags.split(','));
+    client.coc.addClans(config.clanTags.split(',')); // FIX client.coc.events.
 
     for (const file of commandFiles) {
         const command = (await import(path.join(__dirname, `commands/${file}`))) as CommandFile;
@@ -48,7 +48,7 @@ async function main() {
     for (const file of clashEvents) {
         const event = (await import(path.join(__dirname, `clashEvents/${file}`))) as ClashEventFile;
         // Set custom clan events. Same can be done for war and player too.
-        client.coc.events.setClanEvent({
+        client.coc.setClanEvent({
             name: event.name,
             filter: (...args) => event.filter(...args)
         });
@@ -67,7 +67,7 @@ async function main() {
     });
 
     await client.login(config.botToken);
-    await client.coc.events.init();
+    await client.coc.init();
 }
 
 void main();
