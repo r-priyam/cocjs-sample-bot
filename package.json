@@ -25,7 +25,7 @@
     "devDependencies": {
         "@commitlint/cli": "^17.6.1",
         "@commitlint/config-conventional": "^17.6.1",
-        "@discordjs/rest": "^1.7.0",
+        "@discordjs/rest": "^2.4.0",
         "@types/node": "^18.16.3",
         "@types/prettier": "^2.7.2",
         "@typescript-eslint/eslint-plugin": "^5.59.1",
